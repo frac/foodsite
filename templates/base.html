@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<link rel="stylesheet" href="/static/css/reset.css" type="text/css" media="screen, projection">
+<link rel="stylesheet" href="/static/css/base.css" type="text/css" media="screen, projection">
+<link rel="stylesheet" href="/static/css/typography.css" type="text/css" media="screen, projection">
+
+<title>shhh! it's the secret food project</title>
+<style>
+body {background-color:#fff;}
+.main{background-color:#fff;}
+</style>
+</head><body>
+<div class="main">
+    <div class="miniclear"></div>
+    <a href="/"><div id="title">Secret Food Project</div><div class="g960"><img src="{{MEDIA_URL}}images/logo.jpg" width=970 height=215 title="secret food project logo"></div></a>
+<div class="miniclear"></div>
+{% block menu %}
+<div class="g160">
+    <ul class="menu">
+        <li><a href="/detalhes">foobar</a><br></li>
+        <li><a href="/detalhes">foobar</a><br></li>
+        <li><a href="/detalhes">foobar</a><br></li>
+        <li><a href="/detalhes">foobar</a><br></li>
+        <li><a href="/detalhes">foobar</a><br></li>
+    </ul>
+</div>
+{% endblock%}
+
+<div class="g800">
+{% block content %}
+foobar
+{% endblock%}
+</div>
+<div class="clear">&nbsp;</div>
+<div class="g960 tc"><p class="note">hey!</p> </div>
+<div class="clear">&nbsp;</div>
+
+ </div>
+</body></html>

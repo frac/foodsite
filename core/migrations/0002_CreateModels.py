@@ -7,6 +7,31 @@ class Migration:
     
     def forwards(self, orm):
         
+        # Adding model 'Measurement'
+        db.create_table('core_measurement', (
+            ('id', orm['core.measurement:id']),
+            ('recipe', orm['core.measurement:recipe']),
+            ('ingredient', orm['core.measurement:ingredient']),
+            ('amount', orm['core.measurement:amount']),
+            ('unit', orm['core.measurement:unit']),
+            ('order', orm['core.measurement:order']),
+        ))
+        db.send_create_signal('core', ['Measurement'])
+        
+        # Adding model 'Recipe'
+        db.create_table('core_recipe', (
+            ('post_ptr', orm['core.recipe:post_ptr']),
+        ))
+        db.send_create_signal('core', ['Recipe'])
+        
+        # Adding model 'Photo'
+        db.create_table('core_photo', (
+            ('id', orm['core.photo:id']),
+            ('title', orm['core.photo:title']),
+            ('image', orm['core.photo:image']),
+        ))
+        db.send_create_signal('core', ['Photo'])
+        
         # Adding model 'Unit'
         db.create_table('core_unit', (
             ('id', orm['core.unit:id']),
@@ -18,29 +43,9 @@ class Migration:
         
         # Adding model 'Ingredient'
         db.create_table('core_ingredient', (
-            ('id', orm['core.ingredient:id']),
-            ('name', orm['core.ingredient:name']),
+            ('post_ptr', orm['core.ingredient:post_ptr']),
         ))
         db.send_create_signal('core', ['Ingredient'])
-        
-        # Adding model 'Measurement'
-        db.create_table('core_measurement', (
-            ('id', orm['core.measurement:id']),
-            ('post', orm['core.measurement:post']),
-            ('ingredient', orm['core.measurement:ingredient']),
-            ('amount', orm['core.measurement:amount']),
-            ('unit', orm['core.measurement:unit']),
-            ('order', orm['core.measurement:order']),
-        ))
-        db.send_create_signal('core', ['Measurement'])
-        
-        # Adding model 'Photo'
-        db.create_table('core_photo', (
-            ('id', orm['core.photo:id']),
-            ('title', orm['core.photo:title']),
-            ('image', orm['core.photo:image']),
-        ))
-        db.send_create_signal('core', ['Photo'])
         
         # Adding model 'Post'
         db.create_table('core_post', (
@@ -49,6 +54,7 @@ class Migration:
             ('slug', orm['core.post:slug']),
             ('text', orm['core.post:text']),
             ('pic', orm['core.post:pic']),
+            ('published_at', orm['core.post:published_at']),
         ))
         db.send_create_signal('core', ['Post'])
         
@@ -56,17 +62,20 @@ class Migration:
     
     def backwards(self, orm):
         
+        # Deleting model 'Measurement'
+        db.delete_table('core_measurement')
+        
+        # Deleting model 'Recipe'
+        db.delete_table('core_recipe')
+        
+        # Deleting model 'Photo'
+        db.delete_table('core_photo')
+        
         # Deleting model 'Unit'
         db.delete_table('core_unit')
         
         # Deleting model 'Ingredient'
         db.delete_table('core_ingredient')
-        
-        # Deleting model 'Measurement'
-        db.delete_table('core_measurement')
-        
-        # Deleting model 'Photo'
-        db.delete_table('core_photo')
         
         # Deleting model 'Post'
         db.delete_table('core_post')
@@ -75,15 +84,14 @@ class Migration:
     
     models = {
         'core.ingredient': {
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '255'})
+            'post_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': "orm['core.Post']", 'unique': 'True', 'primary_key': 'True'})
         },
         'core.measurement': {
             'amount': ('django.db.models.fields.DecimalField', [], {'max_digits': '10', 'decimal_places': '2'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'ingredient': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['core.Ingredient']"}),
             'order': ('django.db.models.fields.IntegerField', [], {}),
-            'post': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['core.Post']"}),
+            'recipe': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['core.Recipe']"}),
             'unit': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['core.Unit']"})
         },
         'core.photo': {
@@ -93,10 +101,14 @@ class Migration:
         },
         'core.post': {
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'pic': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['core.Photo']"}),
+            'pic': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['core.Photo']", 'null': 'True', 'blank': 'True'}),
+            'published_at': ('django.db.models.fields.DateTimeField', [], {}),
             'slug': ('django.db.models.fields.SlugField', [], {'max_length': '50', 'db_index': 'True'}),
             'text': ('django.db.models.fields.TextField', [], {}),
             'title': ('django.db.models.fields.CharField', [], {'max_length': '255'})
+        },
+        'core.recipe': {
+            'post_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': "orm['core.Post']", 'unique': 'True', 'primary_key': 'True'})
         },
         'core.unit': {
             'conversion': ('django.db.models.fields.IntegerField', [], {}),
