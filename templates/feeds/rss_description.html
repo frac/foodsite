@@ -1,18 +1,13 @@
 {% load markup %}
-{% block content %}
+{% load comments %}
+<img src="{{MEDIA_URL}}images/bar_entry.png">
     <div class="clear">&nbsp;</div>
-    <h1>{{ object.title }}</h1>
+        {% get_comment_count for obj as comment_count %}        
+        <h1>{{ obj.title }}</h1>
+        <p class="credits">{{obj.published_at }} | by {{obj.author}} | Categories: {% for tag in obj.get_tags %} <a href="{{site.domain}}/tag/{{tag}}" alt="{{tag}}" title="{{tag}}">{{tag}}</a> {%endfor%} | {{ comment_count }} comments </p>
         <p>
-        <a href="{{MEDIA_URL}}{{object.pic.image}}"><img src="{{MEDIA_URL}}{{object.pic.small}}" alt="{{object.pic.name}}"></a>
+        <a href="{{MEDIA_URL}}{{obj.pic.image}}"><img src="{{MEDIA_URL}}{{obj.pic.small}}" alt="{{obj.pic.name}}"></a>
         
-        {{ object.text|textile }}<p>
+        {{ obj.text|textile }}<p>
         <div class="clear">&nbsp;</div>
-            <p class="tags">tagged as:
-            {% for tag in object.get_tags %}
-              <a href="/tag/{{tag}}" alt="{{tag}}" title="{{tag}}">{{tag}}</a>
-            {%endfor%}</p>
-            <p class="credits"> published {{object.published_at }} by Adriano</p>
 
-        <p><a href="/">Back</a></p>
-
-        {% endblock %}
