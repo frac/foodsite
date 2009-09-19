@@ -65,7 +65,10 @@ h5,h6 { font-size: 1.3em;}
 #tags {}
 
 li ul, 
-li ol  { margin:0 1.5em; }
+li ol  { margin:0em 1.5em; }
+ul li { 
+    margin-left:0.2em; 
+}
 ul, ol { margin: 0 1.5em 1.5em 1.5em; }
 
 
