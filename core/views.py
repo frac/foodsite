@@ -5,7 +5,7 @@ from django.utils.feedgenerator import Atom1Feed
 from django.views.generic.list_detail import object_list
 
 import datetime
-from core.models import Post
+from foodsite.core.models import Post
 
 
 

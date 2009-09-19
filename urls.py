@@ -2,14 +2,14 @@ from django.conf.urls.defaults import *
 from django.views.generic.simple import direct_to_template
 from django.views.generic.list_detail import object_list, object_detail
 
-from core.views import list as post_list
-from core.views import BlogFeed, AtomBlogFeed
+from foodsite.core.views import list as post_list
+from foodsite.core.views import BlogFeed, AtomBlogFeed
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
 import datetime
-from core.models import Post
+from foodsite.core.models import Post
 from tagging.views import tagged_object_list
 
 

@@ -1,5 +1,5 @@
 from tagging.models import Tag
-from core.models import Post
+from foodsite.core.models import Post
 import datetime
 
 def get_categories(request):
