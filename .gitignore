@@ -2,4 +2,4 @@
 *.swp
 development_mode
 static/photos
-
+settings.py
