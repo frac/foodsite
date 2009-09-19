@@ -1,0 +1,7 @@
+
+
+requires
+
+pip install south
+pip install textile
+pip install django-tagging

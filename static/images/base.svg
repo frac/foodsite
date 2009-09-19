@@ -40,6 +40,18 @@
        inkscape:vp_z="744.09448 : 526.18109 : 1"
        inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
        id="perspective9" />
+    <filter
+       inkscape:collect="always"
+       id="filter3471"
+       x="-0.012827656"
+       width="1.0256553"
+       y="-0.1859854"
+       height="1.3719708">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="5.0731562"
+         id="feGaussianBlur3473" />
+    </filter>
   </defs>
   <sodipodi:namedview
      inkscape:window-height="723"
@@ -54,48 +66,419 @@
      pagecolor="#ffffff"
      id="base"
      showgrid="false"
-     inkscape:zoom="0.81207933"
-     inkscape:cx="483.87957"
-     inkscape:cy="76.007863"
+     inkscape:zoom="1.0203886"
+     inkscape:cx="250.5046"
+     inkscape:cy="-439.89943"
      inkscape:window-x="0"
      inkscape:window-y="25"
-     inkscape:current-layer="layer2" />
-  <image
-     xlink:href="logo.jpg"
-     sodipodi:absref="logo.jpg"
-     width="970"
-     height="215"
-     id="image11"
-     x="1.2840737"
-     y="0" />
+     inkscape:current-layer="layer2"
+     showguides="true"
+     inkscape:guide-bbox="true">
+    <sodipodi:guide
+       orientation="1,0"
+       position="511.03381,264.75246"
+       id="guide2442" />
+    <sodipodi:guide
+       orientation="1,0"
+       position="132.30253,-589.97129"
+       id="guide2462" />
+    <sodipodi:guide
+       orientation="1,0"
+       position="132.35878,-212.05124"
+       id="guide2486" />
+  </sodipodi:namedview>
   <g
      inkscape:groupmode="layer"
      id="layer1"
      inkscape:label="text" />
   <g
      inkscape:groupmode="layer"
+     id="layer5"
+     inkscape:label="bar"
+     style="display:inline;opacity:1">
+    <text
+       xml:space="preserve"
+       style="font-size:33.54691315px;font-style:normal;font-weight:normal;opacity:0.5399061;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="310.94211"
+       y="263.08795"
+       id="text2459"><tspan
+         sodipodi:role="line"
+         id="tspan2461"
+         x="310.94211"
+         y="263.08795"
+         style="font-size:53.67506409px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;font-family:BankGothic Md BT;-inkscape-font-specification:BankGothic Md BT Italic">Secret Food Project</tspan></text>
+  </g>
+  <g
+     inkscape:groupmode="layer"
      id="layer2"
-     inkscape:label="foo">
+     inkscape:label="foo"
+     style="display:inline">
     <g
-       id="g2395"
-       transform="matrix(0.6990385,0,0,0.6990385,308.99783,-45.486171)">
+       id="g3477"
+       inkscape:export-filename="/home/fractal/projects/foodsite/static/images/logo.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <image
+         y="0"
+         x="1.2840737"
+         id="image11"
+         height="215"
+         width="970"
+         sodipodi:absref="logo.jpg"
+         xlink:href="logo.jpg" />
       <rect
+         transform="matrix(0.6990385,0,0,0.6990385,304.81954,-43.237699)"
          y="290.75403"
          x="-1.7414551"
          height="65.465218"
          width="949.16602"
-         id="rect2389"
-         style="opacity:1;fill:#00002b;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+         id="rect2457"
+         style="display:inline;opacity:0.77000000000000002;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;overflow:visible;enable-background:accumulate;filter:url(#filter3471)" />
+      <g
+         id="g3377">
+        <rect
+           style="fill:#00002b;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+           id="rect2389"
+           width="663.5036"
+           height="45.762707"
+           x="307.78049"
+           y="157.76208" />
+        <text
+           xml:space="preserve"
+           style="font-size:33.54691315px;font-style:normal;font-weight:normal;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+           x="314.67758"
+           y="194.49466"
+           id="text2384"><tspan
+             sodipodi:role="line"
+             id="tspan2386"
+             x="314.67758"
+             y="194.49466"
+             style="font-size:53.67506409px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;font-family:BankGothic Md BT;-inkscape-font-specification:BankGothic Md BT Italic">Secret Food Project</tspan></text>
+      </g>
+    </g>
+    <g
+       id="g2541"
+       transform="translate(-0.2218522,0)"
+       inkscape:export-filename="/home/fractal/projects/secret_foodsite/static/images/categories.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <g
+         transform="translate(-2.7061121,0)"
+         id="g2501">
+        <rect
+           style="fill:#00002b;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+           id="rect2422"
+           width="150"
+           height="17.612808"
+           x="-1.734778"
+           y="406.19049" />
+        <text
+           xml:space="preserve"
+           style="font-size:12.91128349px;font-style:normal;font-weight:normal;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+           x="0.91972083"
+           y="420.32785"
+           id="text2424"><tspan
+             sodipodi:role="line"
+             id="tspan2426"
+             x="0.91972083"
+             y="420.32785"
+             style="font-size:20.65805626px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;font-family:BankGothic Md BT;-inkscape-font-specification:BankGothic Md BT Italic">Categories</tspan></text>
+      </g>
+    </g>
+    <g
+       id="g2547"
+       transform="translate(-0.2218521,0)">
+      <g
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="/home/fractal/projects/secret_foodsite/static/images/archives.png"
+         transform="matrix(1.0849797,0,0,1.0849797,-2.5586912,-44.461345)"
+         id="g2493">
+        <rect
+           style="fill:#00002b;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+           id="rect2433"
+           width="138.25143"
+           height="16.233307"
+           x="-1.734778"
+           y="438.37573" />
+        <text
+           xml:space="preserve"
+           style="font-size:11.90002346px;font-style:normal;font-weight:normal;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+           x="0.71181047"
+           y="451.40579"
+           id="text2435"><tspan
+             sodipodi:role="line"
+             id="tspan2437"
+             x="0.71181047"
+             y="451.40579"
+             style="font-size:19.04003906px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;font-family:BankGothic Md BT;-inkscape-font-specification:BankGothic Md BT Italic">Archives</tspan></text>
+      </g>
+    </g>
+    <g
+       id="g2553"
+       transform="translate(-0.221852,0)"
+       inkscape:export-filename="/home/fractal/projects/secret_foodsite/static/images/about.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <rect
+         y="459.47702"
+         x="-4.4408903"
+         height="17.612808"
+         width="150"
+         id="rect2508"
+         style="fill:#00002b;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
       <text
-         id="text2384"
-         y="343.3013"
-         x="8.1250782"
-         style="font-size:47.99008179px;font-style:normal;font-weight:normal;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+         id="text2510"
+         y="473.61438"
+         x="-1.7863913"
+         style="font-size:12.91128349px;font-style:normal;font-weight:normal;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
          xml:space="preserve"><tspan
-           style="font-size:76.78413391px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;font-family:BankGothic Md BT;-inkscape-font-specification:BankGothic Md BT Italic"
-           y="343.3013"
-           x="8.1250782"
-           id="tspan2386"
+           style="font-size:20.65805626px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;font-family:BankGothic Md BT;-inkscape-font-specification:BankGothic Md BT Italic"
+           y="473.61438"
+           x="-1.7863913"
+           id="tspan2512"
+           sodipodi:role="line">About</tspan></text>
+    </g>
+    <g
+       id="g2558"
+       transform="translate(-0.2218521,0)"
+       inkscape:export-filename="/home/fractal/projects/secret_foodsite/static/images/popular.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <g
+         id="g2525">
+        <g
+           id="g2514"
+           transform="matrix(1.0849797,0,0,1.0849797,-2.5586912,13.192624)"
+           inkscape:export-filename="/home/fractal/projects/secret_foodsite/static/images/archives.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90">
+          <rect
+             y="438.37573"
+             x="-1.734778"
+             height="16.233307"
+             width="138.25143"
+             id="rect2516"
+             style="fill:#00002b;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+          <text
+             id="text2518"
+             y="451.40579"
+             x="0.71181047"
+             style="font-size:11.90002346px;font-style:normal;font-weight:normal;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+             xml:space="preserve"><tspan
+               style="font-size:19.04003906px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;font-family:BankGothic Md BT;-inkscape-font-specification:BankGothic Md BT Italic"
+               y="451.40579"
+               x="0.71181047"
+               id="tspan2520"
+               sodipodi:role="line">Popular</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g
+       id="g2577"
+       inkscape:export-filename="/home/fractal/projects/secret_foodsite/static/images/blogs.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <g
+         transform="translate(-0.2218521,30.251725)"
+         id="g2531">
+        <g
+           id="g2533"
+           transform="matrix(1.0849797,0,0,1.0849797,-2.5586912,13.192624)"
+           inkscape:export-filename="/home/fractal/projects/secret_foodsite/static/images/archives.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90">
+          <rect
+             y="438.37573"
+             x="-1.734778"
+             height="16.233307"
+             width="138.25143"
+             id="rect2535"
+             style="fill:#00002b;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+          <text
+             id="text2537"
+             y="451.40579"
+             x="0.71181047"
+             style="font-size:11.90002346px;font-style:normal;font-weight:normal;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+             xml:space="preserve"><tspan
+               style="font-size:19.04003906px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;font-family:BankGothic Md BT;-inkscape-font-specification:BankGothic Md BT Italic"
+               y="451.40579"
+               x="0.71181047"
+               id="tspan2539"
+               sodipodi:role="line">Blogs</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g
+       id="g2598"
+       inkscape:export-filename="/home/fractal/projects/secret_foodsite/static/images/subscribe.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <g
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="/home/fractal/projects/secret_foodsite/static/images/archives.png"
+         transform="matrix(1.0849797,0,0,1.0849797,-2.7805433,71.163466)"
+         id="g2586">
+        <rect
+           style="fill:#00002b;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+           id="rect2588"
+           width="138.25143"
+           height="16.233307"
+           x="-1.734778"
+           y="438.37573" />
+        <text
+           xml:space="preserve"
+           style="font-size:11.90002346px;font-style:normal;font-weight:normal;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+           x="0.71181047"
+           y="451.40579"
+           id="text2590"><tspan
+             sodipodi:role="line"
+             id="tspan2592"
+             x="0.71181047"
+             y="451.40579"
+             style="font-size:19.04003906px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;font-family:BankGothic Md BT;-inkscape-font-specification:BankGothic Md BT Italic">Subscribe</tspan></text>
+      </g>
+    </g>
+    <g
+       id="g2764"
+       inkscape:export-filename="/home/fractal/projects/secret_foodsite/static/images/bar_latest.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <rect
+         y="578.60071"
+         x="-167.29597"
+         height="17.612808"
+         width="810"
+         id="rect2608"
+         style="fill:#00002b;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+      <text
+         id="text2610"
+         y="592.73804"
+         x="-163.67903"
+         style="font-size:12.91128349px;font-style:normal;font-weight:normal;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           style="font-size:20.65805626px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;font-family:BankGothic Md BT;-inkscape-font-specification:BankGothic Md BT Italic"
+           y="592.73804"
+           x="-163.67903"
+           id="tspan2612"
+           sodipodi:role="line">Latest</tspan></text>
+    </g>
+    <g
+       id="g2772"
+       inkscape:export-filename="/home/fractal/projects/secret_foodsite/static/images/bar_entry.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <rect
+         y="605.35211"
+         x="-167.29597"
+         height="17.612808"
+         width="810"
+         id="rect2638"
+         style="fill:#00002b;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+      <text
+         id="text2640"
+         y="619.48944"
+         x="-163.67903"
+         style="font-size:12.91128349px;font-style:normal;font-weight:normal;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           style="font-size:20.65805626px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;font-family:BankGothic Md BT;-inkscape-font-specification:BankGothic Md BT Italic"
+           y="619.48944"
+           x="-163.67903"
+           id="tspan2642"
+           sodipodi:role="line">Entry</tspan></text>
+    </g>
+    <g
+       id="g2780"
+       inkscape:export-filename="/home/fractal/projects/secret_foodsite/static/images/bar_categories.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <rect
+         y="630.46887"
+         x="-167.29597"
+         height="17.612808"
+         width="810"
+         id="rect2646"
+         style="fill:#00002b;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+      <text
+         id="text2648"
+         y="644.6062"
+         x="-163.66895"
+         style="font-size:12.91128349px;font-style:normal;font-weight:normal;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           style="font-size:20.65805626px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;font-family:BankGothic Md BT;-inkscape-font-specification:BankGothic Md BT Italic"
+           y="644.6062"
+           x="-163.66895"
+           id="tspan2650"
+           sodipodi:role="line">Categories</tspan></text>
+    </g>
+    <g
+       id="g2788"
+       inkscape:export-filename="/home/fractal/projects/secret_foodsite/static/images/bar_about.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <rect
+         y="658.96228"
+         x="-167.29597"
+         height="17.612808"
+         width="810"
+         id="rect2668"
+         style="fill:#00002b;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+      <text
+         id="text2670"
+         y="673.09961"
+         x="-161.64146"
+         style="font-size:12.91128349px;font-style:normal;font-weight:normal;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           style="font-size:20.65805626px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;font-family:BankGothic Md BT;-inkscape-font-specification:BankGothic Md BT Italic"
+           y="673.09961"
+           x="-161.64146"
+           id="tspan2672"
+           sodipodi:role="line">About</tspan></text>
+    </g>
+    <g
+       id="g2748">
+      <rect
+         y="686.40277"
+         x="-167.29597"
+         height="17.612808"
+         width="790"
+         id="rect2676"
+         style="fill:#00002b;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+      <text
+         id="text2678"
+         y="700.5401"
+         x="-163.5479"
+         style="font-size:12.91128349px;font-style:normal;font-weight:normal;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           style="font-size:20.65805626px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;font-family:BankGothic Md BT;-inkscape-font-specification:BankGothic Md BT Italic"
+           y="700.5401"
+           x="-163.5479"
+           id="tspan2680"
+           sodipodi:role="line">Subscribe</tspan></text>
+    </g>
+    <g
+       id="g2450"
+       inkscape:export-filename="/home/fractal/projects/foodsite/static/images/bar_rss.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <rect
+         y="756.96417"
+         x="-127.45487"
+         height="17.612808"
+         width="280.39023"
+         id="rect2441"
+         style="fill:#00002b;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+      <text
+         id="text2443"
+         y="771.1015"
+         x="-123.70679"
+         style="font-size:12.91128349px;font-style:normal;font-weight:normal;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           style="font-size:20.65805626px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;font-family:BankGothic Md BT;-inkscape-font-specification:BankGothic Md BT Italic"
+           y="771.1015"
+           x="-123.70679"
+           id="tspan2445"
            sodipodi:role="line">Secret Food Project</tspan></text>
     </g>
   </g>
