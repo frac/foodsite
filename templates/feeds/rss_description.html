@@ -1,10 +1,17 @@
 {% load markup %}
 {% load comments %}
+<style>
+    h1 { font-size: 3em;  margin-bottom: 0.2em; line-height:1em; font-weight:bold; }
+    p img       { float: left; margin: 0.3em 0.833em 0.833em 0; padding: 0; }
+    p img.right { float: right; margin: 0.3em  0 0.833em 0.833em;  }
+    .credits{color:#444334;}
+    hr { margin-bottom:0.5em; color:#00002b; background-color:#00002b; height:1px; border:none;}
+</style>
 <img src="{{MEDIA_URL}}images/bar_rss.png">
     <div class="clear">&nbsp;</div>
         {% get_comment_count for obj as comment_count %}        
-        <h1>{{ obj.title }}</h1>
-        <p class="credits">{{obj.published_at }} | by {{obj.author}} | Categories: {% for tag in obj.get_tags %} <a href="{{site.domain}}/tag/{{tag}}" alt="{{tag}}" title="{{tag}}">{{tag}}</a> {%endfor%} | {{ comment_count }} comments </p>
+        <h1><a href="http://{{site.domain}}/post/{{ obj.slug }}">{{ obj.title }}</a></h1>
+        <p class="credits">{{obj.published_at }} | by {{obj.author}} | Categories: {% for tag in obj.get_tags %} <a href="http://{{site.domain}}/tag/{{tag}}" alt="{{tag}}" title="{{tag}}">{{tag}}</a> {%endfor%} | {{ comment_count }} comments </p>
         <p>
         <a href="{{MEDIA_URL}}{{obj.pic.image}}"><img src="{{MEDIA_URL}}{{obj.pic.small}}" alt="{{obj.pic.name}}"></a>
         
