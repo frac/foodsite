@@ -116,10 +116,14 @@ CONVERSIONS= ((0,"gramas"),
             )
 
 def tagit(sender, instance, **kwargs):
+    if type(instance) != Post:
+        instance = Post.objects.get(id=instance.id)
     Tag.objects.update_tags(instance, instance.tags)
 
 
 post_save.connect(tagit, sender=Post)
+post_save.connect(tagit, sender=Recipe)
+post_save.connect(tagit, sender=Ingredient)
 
 
 
