@@ -84,7 +84,7 @@ pre_delete.connect(destroy_visualizacao, sender=Photo)
 
 class Post(models.Model):
     title = models.CharField(max_length=255)
-    slug = models.SlugField()
+    slug = models.SlugField(unique=True)
     text = models.TextField()
     pic = models.ForeignKey(Photo, null=True, blank=True)
     published_at = models.DateTimeField(null=True, blank=True)

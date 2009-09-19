@@ -36,15 +36,22 @@
     <h1>Oops no posts yet</h1>
 {% endif %}
 
-    {% if is_paginated %}
-
+<div class="clear">&nbsp;</div>
+{% if page %}
+<div class="g480">Pages:
+    {% if has_previous %}
+        <a href="?page={{ page|add:"-1" }}" class="pagination">previous</a>
+    {% endif %}    
     {% for pg in page_range %}
     {% ifequal pg page %}
     {{pg}}
     {% else %}
-    <a href="/?page={{pg}}">{{pg}}</a>        
-{% endifequal %}
-{% endfor %}
+    <a href="?page={{pg}}" class='pagination'>{{pg}}</a>        
+    {% endifequal %}
+    {% endfor %}
+    {% if has_next %}
+        <a href="?page={{ page|add:"1" }}" class="pagination">next</a>
+    {% endif %}    
+</div>
 {% endif %}
-
 {% endblock %}
