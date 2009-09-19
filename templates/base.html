@@ -8,6 +8,10 @@
 <link rel="stylesheet" href="/static/css/base.css" type="text/css" media="screen, projection">
 <link rel="stylesheet" href="/static/css/typography.css" type="text/css" media="screen, projection">
 
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://sfp.adrianopetrich.com/feeds/blog" />
+<link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="http://sfp.adrianopetrich.com/feeds/atom/" />
+
+
 <title>shhh! it's the secret food project</title>
 <style>
 body {background-color:#fff;}
@@ -15,17 +19,32 @@ body {background-color:#fff;}
 </style>
 </head><body>
 <div class="main">
-    <div class="miniclear"></div>
-    <a href="/"><div id="title">Secret Food Project</div><div class="g960"><img src="{{MEDIA_URL}}images/logo.jpg" width=970 height=215 title="secret food project logo"></div></a>
+    <a href="/"><div class="g960"><img src="{{MEDIA_URL}}images/logo.png" width=970 height=215 title="secret food project logo"></div></a>
 <div class="miniclear"></div>
 {% block menu %}
 <div class="g160">
+    <img src="{{MEDIA_URL}}images/categories.png">
     <ul class="menu">
-        <li><a href="/detalhes">foobar</a><br></li>
-        <li><a href="/detalhes">foobar</a><br></li>
-        <li><a href="/detalhes">foobar</a><br></li>
-        <li><a href="/detalhes">foobar</a><br></li>
-        <li><a href="/detalhes">foobar</a><br></li>
+        {% for tag in categories %}
+        <li><a href="/tag/{{tag}}" alt="{{tag}}" title="{{tag}}">{{tag}}({{tag.count}})</a></li>
+        {% endfor %}
+    </ul>
+    <!--img src="{{MEDIA_URL}}images/popular.png">
+    <ul class="menu">
+        <li><a href="/detalhes">foobar</a></li>
+    </ul>
+    <img src="{{MEDIA_URL}}images/subscribe.png">
+    <ul class="menu">
+        <li><a href="/detalhes">foobar</a></li>
+    </ul>
+    <img src="{{MEDIA_URL}}images/blogs.png">
+    <ul class="menu">
+        <li><a href="/detalhes">foobar</a></li>
+    </ul-->
+    <img src="{{MEDIA_URL}}images/about.png">
+    <ul class="menu">
+        <li><a href="/detalhes">me</a></li>
+        <li><a href="/detalhes">the site</a></li>
     </ul>
 </div>
 {% endblock%}

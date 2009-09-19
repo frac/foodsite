@@ -1,5 +1,9 @@
 
-body { font:75%/1.2em sans-serif;}
+body { 
+    font:75%/1.2em sans-serif;
+    font-family:sans-serif;
+
+}
 
 p { padding:0 0  1em 0;color:#111;}
 
@@ -23,8 +27,16 @@ p img.right { float: right; margin: 0.3em  0 0.833em 0.833em;  }
 h1,h2{ font-weight:normal; color: #333; font-family:sans-serif;  }
 h3,h4,h5,h6 { font-weight: normal; color: #333; font-family:sans-serif; }
 
+.credits{color:#444334;}
 
-h1 { font-size: 2.2em;  margin-bottom: 0.682em; line-height:1.1em; }
+
+.menu li{
+    display:block;
+    font-size:1em;
+    margin-top:5px;
+}
+
+h1 { font-size: 3em;  margin-bottom: 0.2em; line-height:1em; font-weight:bold; }
 h2 { font-size: 1.9em;  margin-bottom: 0.79em; line-height:1em;}
 h3 { font-size: 1.7em;  margin-bottom: 0.882em;line-height:1em; }
 h4 { font-size: 1.4em;  margin-bottom: 1.071em;line-height:1em; }
@@ -84,7 +96,7 @@ dfn { font-weight: bold; }
 pre, code { margin: 1.5em 0; white-space: pre; }
 pre, code, tt { font: 1em monospace; line-height: 1.5; } 
 tt { display: block; margin: 1.5em 0; }
-hr { margin-bottom:1.5em; }
+hr { margin-bottom:0.5em; color:#00002b; background-color:#00002b; height:1px; border:none;}
 
 /*other small things */
 

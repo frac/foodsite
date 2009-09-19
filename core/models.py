@@ -2,7 +2,7 @@ from django.db import models
 from django.db.models.signals import post_save, pre_delete
 from tagging.fields import TagField
 from tagging.models import Tag
-
+import datetime
 import Image, os, ImageOps
 MAX_SIZE = 970
 SMALL_SIZE = 450
@@ -12,6 +12,7 @@ THUMB_SIZE = 210
 class Photo(models.Model):
     title = models.CharField(max_length=255)
     image = models.ImageField(upload_to='photos/%Y/%m/%d')
+    author = models.CharField(max_length=255, default="Adriano")
 
     def __unicode__(self):
         return u"%s"% (self.title)
@@ -61,7 +62,8 @@ class Photo(models.Model):
 
     def destroy_thumb(self):
         try:
-            os.unlink(self.thumb)
+            os.unlink(self.get_path(True))
+            os.unlink(self.get_path(False))
         except:
             pass
 
@@ -87,15 +89,19 @@ class Post(models.Model):
     pic = models.ForeignKey(Photo, null=True, blank=True)
     published_at = models.DateTimeField(null=True, blank=True)
     tags = TagField()
+    author = models.CharField(max_length=255, default="Adriano")
 
     def set_tags(self, tags):
         Tag.objects.update_tags(self, tags)
 
-    def get_tags(self, tags):
+    def get_tags(self):
         return Tag.objects.get_for_object(self)    
 
     def __unicode__(self):
         return u"%s"% self.title
+    @staticmethod
+    def get_open():
+        return Post.objects.filter(published_at__isnull=False,published_at__lte=datetime.datetime.today()).order_by('-published_at')
 
 class Recipe(Post):
     pass
@@ -108,6 +114,14 @@ CONVERSIONS= ((0,"gramas"),
               (1,"kilos"),
               (3,"celcius")  
             )
+
+def tagit(sender, instance, **kwargs):
+    Tag.objects.update_tags(instance, instance.tags)
+
+
+post_save.connect(tagit, sender=Post)
+
+
 
 class Unit(models.Model):
     metric = models.CharField(max_length=255)

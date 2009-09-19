@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.models import User
 from models import *
+import datetime
 
 class PhotoInline(admin.TabularInline):
         model = Photo
@@ -17,10 +18,18 @@ class RecipeAdmin(admin.ModelAdmin):
     list_display = ('title','pic','slug','published_at')
     ordering = ('-published_at',)
 
+def publish(modeladmin, request, queryset):
+    for obj in queryset:
+        if not obj.published_at:
+            obj.published_at=datetime.datetime.today()
+            obj.save()
+
+
 class PostAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title",)}
     list_display = ('title','pic','slug','published_at')
     ordering = ('-published_at',)
+    actions = [publish]
 
 class IngredientAdmin(admin.ModelAdmin):
     list_display = ('title','pic',)

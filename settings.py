@@ -61,7 +61,7 @@ MEDIA_ROOT = os.path.join(PROJECT_PATH,'static')
 if DEBUG:
     MEDIA_URL = '/static/'
 else:
-    MEDIA_URL = 'http://aaoquadrado.com/static/'
+    MEDIA_URL = 'http:/sfp.adrianopetrich.com/static/'
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
@@ -94,7 +94,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.debug",
     "django.core.context_processors.i18n",
     "django.core.context_processors.media",
-    # 'aaoquadrado.middlewares.flavor_chooser',
+    'middleware.get_categories',
 )    
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -104,6 +104,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.admindocs',
     'django.contrib.markup',
+    'django.contrib.comments',
     'south',
     'tagging',
     'core',
