@@ -1,0 +1,9 @@
+{% extends "base.html"%}
+{% load markup %}
+{% block content %}
+<img src="{{MEDIA_URL}}images/bar_entry.png">
+        <div class="clear">&nbsp;</div>
+        <p>{{ flatpage.content|textile }}<p>
+        <div class="clear">&nbsp;</div>
+
+{% endblock %}

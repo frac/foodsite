@@ -18,7 +18,7 @@ def list(request):
 class BlogFeed(Feed):
     title = "Secret Food Project"
     link = "/"
-    description = "Food obsession is an art"
+    description = "So secret that we don't even have a subtitle"
 
     def item_link(self, item):
         """
@@ -27,7 +27,7 @@ class BlogFeed(Feed):
         return "/post/%s"% item.slug
 
     def items(self):
-        return Post.objects.filter(published_at__isnull=False,published_at__lte=datetime.datetime.today()).order_by('-published_at')[:10]
+        return Post.get_open()[:10]
 
 class AtomBlogFeed(BlogFeed):
     feed_type = Atom1Feed
