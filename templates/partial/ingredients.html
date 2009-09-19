@@ -1,0 +1,22 @@
+<h2>Ingredients</h2>
+<hr/>
+{% for measure in measurements %}
+  {% if measure.ingredient %}  
+    {{ measure.ingredient.name }}, 
+    {% if  measure.amount %}
+        {{ measure.metric }}
+        {{ measure.imperial }}
+    {% endif %}
+    {% if  measure.detail %}
+        {{ measure.detail }}
+    {% endif %}
+    <br/>
+  {% else %}
+  <br/>
+  <h3>{{ measure.detail }}</h3>
+  {% endif %}
+{% endfor %}
+  <br/>
+
+<h2>Method</h2>
+<hr/>

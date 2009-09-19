@@ -107,12 +107,22 @@ class Recipe(Post):
     pass
 
 class Ingredient(Post):
-    def __unicode__(self):
-        return u"%s"% (self.title)
+    @property
+    def name(self):
+        return self.title
 
-CONVERSIONS= ((0,"gramas"),
-              (1,"kilos"),
-              (3,"celcius")  
+CONVERSIONS= (
+              (0,"No conversion"),
+              (1,"g/oz"),
+              (2,"k/Lb"),
+              (3,"ml/foz"),
+              (8,"ml/cup"),
+              (4,"l/foz"),
+              (9,"l/quart"),
+              (5,"cm/inch"),
+              (6,"m/inch"),
+              (10,"m/y"),
+              (7,"celcius/F")  
             )
 
 def tagit(sender, instance, **kwargs):
@@ -125,6 +135,7 @@ post_save.connect(tagit, sender=Post)
 post_save.connect(tagit, sender=Recipe)
 post_save.connect(tagit, sender=Ingredient)
 
+from decimal import Decimal as D
 
 
 class Unit(models.Model):
@@ -132,21 +143,63 @@ class Unit(models.Model):
     imperial = models.CharField(max_length=255)
     conversion = models.IntegerField(choices=CONVERSIONS)
 
-    def get_metric(self):
-        pass
-    
-    def get_imperial(self):
-        pass
-
     def __unicode__(self):
-        return u"%s,%s"% (self.metric, self.imperial)
+        return u"%s -> %s"% (self.metric, self.imperial)
+
+    def to_imperial(self, amount):
+        if self.conversion == 1L: # g -> oz
+            return D('0.035') * amount
+        if self.conversion == 2L: # k -> Lb
+            return D('2.2') * amount
+        if self.conversion == 3L: # ml -> foz
+            return D('0.0338') * amount
+        if self.conversion == 4L: # l -> foz
+            return D('33.8') * amount
+        if self.conversion == 5L: # cm -> inch
+            return D('0.394') * amount
+        if self.conversion == 6L: # m -> inch
+            return D('39.4') * amount
+        if self.conversion == 7L: # c -> F
+            return D('1.8') * amount + 32
+        if self.conversion == 8L: # ml -> cup
+            return D('0.0042194092827004216') * amount
+        if self.conversion == 9L: # l -> qt
+            return D('0.0010570824524312897') * amount
+        if self.conversion == 10L: # m -> y
+            return D('1.0936133') * amount
+
+
+from math import floor
+from fractions import Fraction
+
+def pretty(unit):
+
+    int_part = int(floor(unit))
+    if float(unit - int_part) <= 0.1:
+        return str(int_part)
+    r_part = str(Fraction.from_decimal(unit - int_part).limit_denominator(2))
+    return "%s + %s"% (int_part, r_part)
 
 class Measurement(models.Model):
     recipe = models.ForeignKey(Recipe)
-    ingredient = models.ForeignKey(Ingredient)
-    amount = models.DecimalField(max_digits=10, decimal_places=2)
-    unit = models.ForeignKey(Unit)
+    ingredient = models.ForeignKey(Ingredient, null=True, blank=True)
+    amount = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    unit = models.ForeignKey(Unit, null=True, blank=True)
+    detail = models.CharField(max_length=255, null=True, blank=True)
     order = models.IntegerField()
+
+    def metric(self):
+        if self.unit:
+            return " %s %s "% (pretty( self.amount ), self.unit.metric)
+        else:
+            return pretty( self.amount )
+    
+    def imperial(self):
+        if (not self.unit):
+            return ""
+
+        return "( %s %s )"% (pretty( self.unit.to_imperial(self.amount) ), self.unit.imperial)
+
 
     
 

@@ -32,13 +32,16 @@ class PostAdmin(admin.ModelAdmin):
     actions = [publish]
 
 class IngredientAdmin(admin.ModelAdmin):
+    prepopulated_fields = {"slug": ("title",)}
     list_display = ('title','pic',)
     ordering = ('pic',)
 
 
+class UnitAdmin(admin.ModelAdmin):
+    list_display = ('metric','imperial','conversion')
 
 admin.site.register(Post, PostAdmin)
 admin.site.register(Recipe,RecipeAdmin)
-admin.site.register(Unit)
+admin.site.register(Unit, UnitAdmin)
 admin.site.register(Photo)
 admin.site.register(Ingredient, IngredientAdmin)

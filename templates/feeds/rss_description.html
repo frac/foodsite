@@ -1,4 +1,5 @@
 {% load markup %}
+{% load foodtags %}
 {% load comments %}
 <style>
     h1 { font-size: 3em;  margin-bottom: 0.2em; line-height:1em; font-weight:bold; }
@@ -15,6 +16,7 @@
         <p>
         <a href="{{MEDIA_URL}}{{obj.pic.image}}"><img src="{{MEDIA_URL}}{{obj.pic.small}}" alt="{{obj.pic.name}}"></a>
         
-        {{ obj.text|textile }}<p>
+        {{ obj|ingredients }}
+        {{ obj.text|textile }}</p>
         <div class="clear">&nbsp;</div>
 
