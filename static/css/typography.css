@@ -41,8 +41,8 @@ h2 { font-size: 1.9em;
     margin: 0.4em; 
     line-height:1em;}
 h3 { font-size: 1.7em;line-height:1em; margin: 0.2em; }
-h4 { font-size: 1.4em;line-height:1em; }
-h5,h6 { font-size: 1.3em;}
+h4 { font-size: 1.4em;line-height:1em; margin: 0.2em; }
+h5,h6 { font-size: 1.3em; margin: 0.2em;}
 
 /* Color palete */
 .water { color:#5582d1; }
