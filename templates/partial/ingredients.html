@@ -10,11 +10,22 @@
     {% if  measure.detail %}
         {{ measure.detail }}
     {% endif %}
-    <br/>
   {% else %}
-  <br/>
-  <h3>{{ measure.detail }}</h3>
+    {% if  measure.amount %}
+        {% if  measure.detail %}
+            {{ measure.detail }}: 
+        {% endif %}
+        {% if  measure.amount %}
+            {{ measure.metric }}
+            {{ measure.imperial }}
+        {% endif %}
+        
+    {% else %}
+        <br/>
+        <h3>{{ measure.detail }}</h3>
+      {% endif %}
   {% endif %}
+  <br/>
 {% endfor %}
   <br/>
 

@@ -14,6 +14,9 @@ class Photo(models.Model):
     image = models.ImageField(upload_to='photos/%Y/%m/%d')
     author = models.CharField(max_length=255, default="Adriano")
 
+    class Meta:
+        ordering = ["id"]
+
     def __unicode__(self):
         return u"%s"% (self.title)
 
@@ -90,6 +93,10 @@ class Post(models.Model):
     published_at = models.DateTimeField(null=True, blank=True)
     tags = TagField()
     author = models.CharField(max_length=255, default="Adriano")
+
+
+    class Meta:
+        ordering = ["-published_at"]
 
     def set_tags(self, tags):
         Tag.objects.update_tags(self, tags)
@@ -187,6 +194,10 @@ class Measurement(models.Model):
     unit = models.ForeignKey(Unit, null=True, blank=True)
     detail = models.CharField(max_length=255, null=True, blank=True)
     order = models.IntegerField()
+
+    class Meta:
+        ordering = ["order"]
+
 
     def metric(self):
         if self.unit:
