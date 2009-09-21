@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from models import *
 import datetime
 
+
 class PhotoInline(admin.TabularInline):
         model = Photo
         extra = 1

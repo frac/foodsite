@@ -1,7 +1,10 @@
+h1. Foodsite
 
+My personal food blog written in django
 
 requires
 
 pip install south
 pip install textile
 pip install django-tagging
+pip install django-comments-spamfighter

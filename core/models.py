@@ -98,7 +98,10 @@ class Post(models.Model):
     published_at = models.DateTimeField(null=True, blank=True)
     tags = TagField()
     author = models.CharField(max_length=255, default="Adriano")
-
+    
+    @property
+    def enable_comments(self):
+        return True
 
     class Meta:
         ordering = ["-published_at"]
@@ -220,6 +223,18 @@ class Measurement(models.Model):
         return "( %s %s )"% (pretty( self.unit.to_imperial(self.amount) ), self.unit.imperial)
 
 
-    
+from django.contrib.comments.moderation import  moderator 
+from comments_spamfighter.moderation import SpamFighterModerator
+class PostModerator(SpamFighterModerator):
+    # django's genric moderation options
+    #auto_moderate_field = 'created'
+    email_notification = True
 
-    
+    # comments spamfighter options
+    akismet_check = True
+    akismet_check_moderate = True
+    keyword_check = True
+    keyword_check_moderate = False
+
+moderator.register(Post, PostModerator)
+

@@ -109,6 +109,11 @@ INSTALLED_APPS = (
     'django.contrib.flatpages',
     'south',
     'tagging',
+    'comments_spamfighter',
     'foodsite.core',
 )
+
+AKISMET_SECRET_API_KEY = "245f1a5848fb"
 #DEBUG = True
+
+
