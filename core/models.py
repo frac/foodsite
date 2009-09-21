@@ -33,7 +33,7 @@ class Photo(models.Model):
     @property
     def full_url(self):
         path = str(self.image)
-        return "http://sfp.adrianopetrich.com/%s_t%s"% (path[:-4],path[-4:])
+        return "http://sfp.adrianopetrich.com/static/%s_s%s"% (path[:-4],path[-4:])
 
     def get_path(self, thumb=True):
         if thumb:
