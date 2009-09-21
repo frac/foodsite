@@ -27,7 +27,7 @@
             <p class="credits">{{post.published_at }} | by {{post.author}} | Categories: {% for tag in post.get_tags %} <a href="/tag/{{tag}}" alt="{{tag}}" title="{{tag}}">{{tag}}</a> {%endfor%} | {{ comment_count }} comments </p>
             <div class="g240"><img src="{{MEDIA_URL}}{{post.pic.thumb}}"  alt="{{post.pic.name}}"></div>
             <div class="g480">
-                <p>{{ post.text|textile|truncatewords_html:100 }}<p>
+                <p>{{ post.text|textile|truncatewords_html:60 }}<p>
             </div>
         {% endif %}
     {% endfor %}
