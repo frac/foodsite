@@ -37,11 +37,15 @@ class IngredientAdmin(admin.ModelAdmin):
     ordering = ('pic',)
 
 
+
+class PhotoAdmin(admin.ModelAdmin):
+    list_display = ('title','image','full_url')
+
 class UnitAdmin(admin.ModelAdmin):
     list_display = ('metric','imperial','conversion')
 
 admin.site.register(Post, PostAdmin)
 admin.site.register(Recipe,RecipeAdmin)
 admin.site.register(Unit, UnitAdmin)
-admin.site.register(Photo)
+admin.site.register(Photo, PhotoAdmin)
 admin.site.register(Ingredient, IngredientAdmin)
