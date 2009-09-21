@@ -10,14 +10,15 @@
         <p class="credits">{{object.published_at }} | by {{object.author}} | Categories: {% for tag in object.get_tags %} <a href="/tag/{{tag}}" alt="{{tag}}" title="{{tag}}">{{tag}}</a> {%endfor%} | {{ comment_count }} comments </p>
         <p>
         <a href="{{MEDIA_URL}}{{object.pic.image}}"><img src="{{MEDIA_URL}}{{object.pic.small}}" alt="{{object.pic.name}}"></a>
-        
+
         {{ object|ingredients }}
         {{ object.text|textile }}</p>
         <div class="clear">&nbsp;</div>
+        <h2>Comments</h2>
+        <hr/>
         <p>{% get_comment_list for object as comment_list %}
         {% for comment in comment_list %}
-        <div class="comment">
-        <hr/>
+        <div class="clear comment {% cycle 'light' 'dark' %}">
         <p>{{comment.user_email|gravatinha}}</p>
         <p>Said <a href="{{ comment.user_url }}">{{ comment.user_name }}</a> in {{ comment.submit_date }}</p>
         <blockquote>{{ comment.comment|linebreaks }}</blockquote>

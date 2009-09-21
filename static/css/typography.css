@@ -29,7 +29,9 @@ h3,h4,h5,h6 { font-weight: normal; color: #333; font-family:sans-serif; }
 
 .credits{color:#444334;}
 
-
+.comment { /*border-top:#00002b solid 1px; */}
+.dark {background-color:#8d8a72;}
+.light {background-color:#c0c0ff;}
 .menu li{
     display:block;
     font-size:1em;
@@ -59,6 +61,7 @@ h5,h6 { font-size: 1.3em; margin: 0.2em;}
 .black-pepper { color:#444334; }
 .pepper-lite { color:#8d8a72; }
 .lipstick { color:#c20c0c; }
+
 
 
 #credits {color:#473523;}
@@ -103,6 +106,7 @@ pre, code, tt { font: 1em monospace; line-height: 1.5; }
 tt { display: block; margin: 1.5em 0; }
 hr { margin-bottom:0.5em; color:#00002b; background-color:#00002b; height:1px; border:none;}
 
+input, textarea { border-color:#00002b; border-width:2px;}
 /*other small things */
 
 .tc { text-align:center; }
