@@ -93,7 +93,7 @@ del {color:#000;}
 
 
 blockquote { padding:1em 1em 1em 1.5em; font-family:baskerville,"palatino linotype",serif; }
-blockquote > *:first-child:before { content:"\201C";font-size:2.5em;margin-left:-.62em;font-family:georgia,serif;padding-right:.2em;color:#aaa;line-height:0; }/* From Tripoli  */
+blockquote > *:first-child:before { content:"\201C";font-size:2.5em;margin-left:.62em;font-family:georgia,serif;padding-right:.2em;color:#aaa;line-height:0; }/* From Tripoli  */
 
 strong { ont-weight: bold; }
 em, dfn { font-style: italic; }

@@ -3,7 +3,6 @@ from django.utils.safestring import mark_safe
 from django import template
 from foodsite.core.models import Recipe, Post
 from django.template.loader import render_to_string
-
 register = template.Library()
 
 
@@ -19,3 +18,13 @@ def ingredients(post):
         return ""
 #ingredients.mark_safe = True
 
+@register.filter
+def md5(valor):
+    from hashlib import md5
+    m = md5(str(valor))
+    return m.hexdigest()
+
+
+@register.filter
+def gravatinha(email):
+    return mark_safe("<img src='http://www.gravatar.com/avatar/%s.jpg?s=80' />"% md5(email))

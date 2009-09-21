@@ -18,8 +18,9 @@
         {% for comment in comment_list %}
         <div class="comment">
         <hr/>
-        <blockquote>{{ comment|linebreaks }}</blockquote>
+        <p>{{comment.user_email|gravatinha}}</p>
         <p>Said <a href="{{ comment.user_url }}">{{ comment.user_name }}</a> in {{ comment.submit_date }}</p>
+        <blockquote>{{ comment.comment|linebreaks }}</blockquote>
         </div>
         {% endfor %}
         </p>
