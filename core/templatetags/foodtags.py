@@ -19,9 +19,9 @@ def ingredients(post):
 #ingredients.mark_safe = True
 
 @register.filter
-def md5(valor):
+def md5(valor=""):
     from hashlib import md5
-    m = md5(str(valor))
+    m = md5(str(valor).lower())
     return m.hexdigest()
 
 
