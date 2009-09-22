@@ -128,6 +128,8 @@ p.break { text-align:center;text-indent:0;line-height:0; }
 p.zero{padding:0; margin:0}
 p.one { padding:0 1em  1em 1em;color:#111;}
 p img.right10 { float: right; margin:0.833em;  }
+p { line-height:1.3em; }
+
 
 .oldbook { font-family:"Book Antiqua","Warnock Pro","Goudy Old Style","Palatino",Georgia,serif; }
 .note { font-family:Georgia, "Times New Roman", Times, serif; font-style:italic; font-size:0.9em; margin:0.1em; color:#333; } 
