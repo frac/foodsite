@@ -15,7 +15,7 @@ class Photo(models.Model):
     author = models.CharField(max_length=255, default="Adriano")
 
     class Meta:
-        ordering = ["image"]
+        ordering = ["-image"]
 
     def __unicode__(self):
         return u"%s"% (self.title)
