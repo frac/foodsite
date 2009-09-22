@@ -52,6 +52,14 @@
          stdDeviation="5.0731562"
          id="feGaussianBlur3473" />
     </filter>
+    <filter
+       inkscape:collect="always"
+       id="filter3374">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="1.323"
+         id="feGaussianBlur3376" />
+    </filter>
   </defs>
   <sodipodi:namedview
      inkscape:window-height="723"
@@ -480,6 +488,83 @@
            x="-123.70679"
            id="tspan2445"
            sodipodi:role="line">Secret Food Project</tspan></text>
+    </g>
+    <g
+       id="g2472"
+       inkscape:export-filename="/home/fractal/projects/foodsite/static/images/flavicon.ico.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <rect
+         y="805.29816"
+         x="-120.59473"
+         height="32"
+         width="32"
+         id="rect2453"
+         style="fill:#00002b;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+      <text
+         id="text2455"
+         y="830.13605"
+         x="-116.79272"
+         style="font-size:22.43545341px;font-style:normal;font-weight:normal;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           style="font-size:35.89673233px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;font-family:BankGothic Md BT;-inkscape-font-specification:BankGothic Md BT Italic"
+           y="830.13605"
+           x="-116.79272"
+           id="tspan2457"
+           sodipodi:role="line">S</tspan></text>
+    </g>
+    <g
+       id="g3378"
+       inkscape:export-filename="/home/fractal/projects/foodsite/static/images/apple-icon.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <rect
+         y="813.1308"
+         x="-46.912933"
+         height="64"
+         width="62"
+         id="rect2466"
+         style="opacity:0.91140849;fill:#000008;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;filter:url(#filter3374);enable-background:accumulate" />
+      <rect
+         y="809.40137"
+         x="-42.613209"
+         height="64"
+         width="62"
+         id="rect2462"
+         style="fill:#00002b;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+      <text
+         id="text2464"
+         y="837.98553"
+         x="-44.375366"
+         style="font-size:22.43545341px;font-style:normal;font-weight:normal;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           style="font-size:35.89673233px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;font-family:BankGothic Md BT;-inkscape-font-specification:BankGothic Md BT Italic"
+           y="837.98553"
+           x="-44.375366"
+           id="tspan2466"
+           sodipodi:role="line">S</tspan></text>
+      <text
+         id="text2458"
+         y="847.77765"
+         x="-22.586111"
+         style="font-size:22.43545341px;font-style:normal;font-weight:normal;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           style="font-size:35.89673233px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;font-family:BankGothic Md BT;-inkscape-font-specification:BankGothic Md BT Italic"
+           y="847.77765"
+           x="-22.586111"
+           id="tspan2460"
+           sodipodi:role="line">F</tspan></text>
+      <text
+         id="text2462"
+         y="857.56976"
+         x="-8.5444136"
+         style="font-size:22.43545341px;font-style:normal;font-weight:normal;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           style="font-size:35.89673233px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;font-family:BankGothic Md BT;-inkscape-font-specification:BankGothic Md BT Italic"
+           y="857.56976"
+           x="-8.5444136"
+           id="tspan2464"
+           sodipodi:role="line">P</tspan></text>
     </g>
   </g>
 </svg>
