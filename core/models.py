@@ -103,6 +103,10 @@ class Post(models.Model):
     def enable_comments(self):
         return True
 
+    @property
+    def full_url(self):
+        return "http://sfp.adrianopetrich.com/post/%s"% self.slug
+
     class Meta:
         ordering = ["-published_at"]
 
@@ -114,6 +118,33 @@ class Post(models.Model):
 
     def __unicode__(self):
         return u"%s"% self.title
+
+    def get_next(self):
+        try:
+            self._next
+        except AttributeError:
+            self._next = None
+        try:
+            if self._next == None:
+                self._next = Post.get_open().filter(published_at__gt=self.published_at).order_by("published_at")[0]
+            return self._next
+        except:
+            return None
+
+    def get_previous(self):
+        try:
+            self._previous
+        except AttributeError:
+            self._previous = None
+        try:
+
+            if self._previous == None:
+                self._previous = Post.get_open().filter(published_at__lt=self.published_at).order_by("-published_at")[0]
+            return self._previous
+        except:
+            return None
+    
+    
     @staticmethod
     def get_open():
         return Post.objects.filter(published_at__isnull=False,published_at__lte=datetime.datetime.today()).order_by('-published_at')
@@ -236,5 +267,8 @@ class PostModerator(SpamFighterModerator):
     keyword_check = True
     keyword_check_moderate = False
 
-moderator.register(Post, PostModerator)
+
+#PLEASE PLEASE don't kill me Niemeyer
+if not (Post in moderator._registry) :
+    moderator.register(Post, PostModerator)
 

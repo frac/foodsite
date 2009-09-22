@@ -28,6 +28,22 @@
         <div class="clear">&nbsp;</div>
         <p>{% render_comment_form for object %}</p>
         <div class="clear">&nbsp;</div>
-        <p><a href="/">Back</a></p>
+        <h2>See more</h2>
+        <hr/>
+        <div class='nav'>
+        {% if object.get_previous %}
+            <div class="left">
+                <a href="/post/{{object.get_previous.slug}}"><img src="{{MEDIA_URL}}{{object.get_previous.pic.thumb}}"><br>
+                    <h3>Previous:{{ object.get_previous.title }}<h3></a>
+            </div>
+        {% endif%}
+        {% if object.get_next %}
+        <div class="right">
+            <a href="/post/{{object.get_next.slug}}"><img src="{{MEDIA_URL}}{{object.get_next.pic.thumb}}"><br>
+                <h3>Next:{{ object.get_next.title }}<h3></a>
+        </div>
+        {% endif%}
+
+        </div>
 
 {% endblock %}
