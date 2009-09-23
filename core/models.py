@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models.signals import post_save, pre_delete
+from django.core.cache import cache
 from tagging.fields import TagField
 from tagging.models import Tag
 import datetime
@@ -174,6 +175,7 @@ CONVERSIONS= (
 def tagit(sender, instance, **kwargs):
     if type(instance) != Post:
         instance = Post.objects.get(id=instance.id)
+    cache.set('categories', None)
     Tag.objects.update_tags(instance, instance.tags)
 
 
