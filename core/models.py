@@ -229,6 +229,9 @@ def pretty(unit):
     if r_part == '1':
         return str(int_part+1)
 
+    if int_part == 0:
+        return "%s"% ( r_part)
+
     return "%s + %s"% (int_part, r_part)
 
 class Measurement(models.Model):
