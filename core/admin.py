@@ -13,11 +13,6 @@ class MeasurementInline(admin.TabularInline):
         model = Measurement
         extra = 10
 
-class RecipeAdmin(admin.ModelAdmin):
-    prepopulated_fields = {"slug": ("title",)}
-    inlines = [MeasurementInline]
-    list_display = ('title','pic','slug','published_at')
-    ordering = ('-published_at',)
 
 def publish(modeladmin, request, queryset):
     for obj in queryset:
@@ -26,11 +21,36 @@ def publish(modeladmin, request, queryset):
             obj.save()
 
 
+def use_photo(modeladmin, request, queryset):
+    for obj in queryset:
+        if not obj.used:
+            obj.used=True
+            obj.save()
+
+class RecipeAdmin(admin.ModelAdmin):
+    prepopulated_fields = {"slug": ("title",)}
+    inlines = [MeasurementInline]
+    list_display = ('title','pic','slug','published_at')
+    ordering = ('-published_at',)
+    actions = [publish]
+
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == "pic":
+            kwargs["queryset"] = Photo.objects.filter(used=False)
+            return db_field.formfield(**kwargs)
+        return super(RecipeAdmin, self).formfield_for_foreignkey(db_field, request, **kwargs)
+
 class PostAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title",)}
     list_display = ('title','pic','slug','published_at')
     ordering = ('-published_at',)
     actions = [publish]
+
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == "pic":
+            kwargs["queryset"] = Photo.objects.filter(used=False)
+            return db_field.formfield(**kwargs)
+        return super(PostAdmin, self).formfield_for_foreignkey(db_field, request, **kwargs)
 
 class IngredientAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title",)}
@@ -41,6 +61,7 @@ class IngredientAdmin(admin.ModelAdmin):
 
 class PhotoAdmin(admin.ModelAdmin):
     list_display = ('title','image','full_url')
+    actions = [use_photo]
 
 class UnitAdmin(admin.ModelAdmin):
     list_display = ('metric','imperial','conversion')

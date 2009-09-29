@@ -14,6 +14,7 @@ class Photo(models.Model):
     title = models.CharField(max_length=255)
     image = models.ImageField(upload_to='photos/%Y/%m/%d')
     author = models.CharField(max_length=255, default="Adriano")
+    used = models.BooleanField(default=False)
 
     class Meta:
         ordering = ["-image"]
