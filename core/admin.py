@@ -30,7 +30,7 @@ def use_photo(modeladmin, request, queryset):
 class RecipeAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title",)}
     inlines = [MeasurementInline]
-    list_display = ('title','pic','slug','published_at')
+    list_display = ('title','pic','slug', 'tags','published_at')
     ordering = ('-published_at',)
     actions = [publish]
 
