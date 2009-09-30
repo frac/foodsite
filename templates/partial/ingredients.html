@@ -1,7 +1,8 @@
 <h2>Ingredients</h2>
 <hr/>
 {% for measure in measurements %}
-  {% if measure.ingredient %}  
+  {% if measure.ingredient %}
+    <p class='ingr'>
     {{ measure.ingredient.name }}, 
     {% if  measure.amount %}
         {{ measure.metric }}
@@ -10,8 +11,10 @@
     {% if  measure.detail %}
         {{ measure.detail }}
     {% endif %}
+    </p>
   {% else %}
     {% if  measure.amount %}
+        <p class="ingr">
         {% if  measure.detail %}
             {{ measure.detail }}: 
         {% endif %}
@@ -19,7 +22,7 @@
             {{ measure.metric }}
             {{ measure.imperial }}
         {% endif %}
-        
+        </p>
     {% else %}
         <br/>
         <h3>{{ measure.detail }}</h3>
