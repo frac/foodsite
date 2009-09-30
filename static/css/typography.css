@@ -35,6 +35,7 @@ h3,h4,h5,h6 { font-weight: normal; color: #333;  }
     display:block;
     font-size:1em;
     margin-top:5px;
+    margin-left:0px;
 }
 .left{
     width:200px;
@@ -73,13 +74,12 @@ h5,h6 { font-size: 1.3em; margin: 0.2em;}
 #credits {color:#473523;}
 #tags {}
 
-li ul, 
-li ol  { margin:0em 1.5em; }
+li ul, li ol  { margin:0em; }
 ul li { 
-    margin-left:0.2em; 
+    font-size:1em;
+    margin-left:0em; 
 }
-ul, ol { margin: 0 1.5em 1.5em 1.5em; }
-
+ul, ol { margin: 0 0.5em 0.5em 0.5em; }
 
 dl { margin: 0 0 1.5em 0; }
 dl dt { font-weight: bold; }
@@ -138,4 +138,16 @@ p { /*line-height:1.3em;*/ }
 .note { font-family:Georgia, "Times New Roman", Times, serif; font-style:italic; font-size:0.9em; margin:0.1em; color:#333; } 
 .mono { font-family:"Courier New", Courier, monospace; }
 
+.pagination {
+  background-color: #035292;
+  color:#FFFFFF;
+  font-weight: bold;
+  padding:0.2em;
+  padding-right:0.5em;
+  padding-left:0.5em;
+}
 
+.current{
+/*  #0033FF*/
+  background-color:#00002b;
+}

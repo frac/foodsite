@@ -38,15 +38,16 @@
 
 <div class="clear">&nbsp;</div>
 {% if page %}
-<div class="g480">Pages:
+<div class="g480">
+    <span class="pagination current"> Pages: </span>&nbsp;
     {% if has_previous %}
-        <a href="?page={{ page|add:"-1" }}" class="pagination">previous</a>
+        <a href="?page={{ page|add:"-1" }}" class="pagination">previous</a>&nbsp;
     {% endif %}    
     {% for pg in page_range %}
     {% ifequal pg page %}
-    {{pg}}
+    <span class="pagination current">{{pg}}</span>&nbsp;
     {% else %}
-    <a href="?page={{pg}}" class='pagination'>{{pg}}</a>        
+    <a href="?page={{pg}}" class='pagination'>{{pg}}</a>&nbsp;        
     {% endifequal %}
     {% endfor %}
     {% if has_next %}
