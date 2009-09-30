@@ -1,8 +1,7 @@
 
 body { 
-    font:75%/1.2em sans-serif;
-    font-family:sans-serif;
-
+    font-size:100%;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;  
 }
 
 p { padding:0 0  1em 0;color:#111;}
@@ -24,8 +23,8 @@ p img       { float: left; margin: 0.3em 0.833em 0.833em 0; padding: 0; }
 p img.right { float: right; margin: 0.3em  0 0.833em 0.833em;  }
 
 
-h1,h2{ font-weight:normal; color: #333; font-family:sans-serif;  }
-h3,h4,h5,h6 { font-weight: normal; color: #333; font-family:sans-serif; }
+h1,h2{ font-weight:normal; color: #333;   }
+h3,h4,h5,h6 { font-weight: normal; color: #333;  }
 
 .credits{color:#444334;}
 
@@ -45,12 +44,12 @@ h3,h4,h5,h6 { font-weight: normal; color: #333; font-family:sans-serif; }
     width:200px;
     float:right;
 }
-h1 { font-size: 3em;line-height:1em; font-weight:bold;  margin: 0.2em;}
+h1 { font-size: 2.7em;line-height:1.2em; font-weight:bold;  margin: 0.2em;}
 h2 { font-size: 1.9em;  
-    margin: 0.4em; 
-    line-height:1em;}
-h3 { font-size: 1.7em;line-height:1em; margin: 0.2em; }
-h4 { font-size: 1.4em;line-height:1em; margin: 0.2em; }
+    margin: 0.2em; 
+    /*line-height:1em;*/}
+h3 { font-size: 1.7em;/*line-height:1em;*/ margin: 0.2em; }
+h4 { font-size: 1.4em;/*line-height:1em;*/ margin: 0.2em; }
 h5,h6 { font-size: 1.3em; margin: 0.2em;}
 
 /* Color palete */
@@ -103,13 +102,17 @@ del {color:#000;}
 
 
 blockquote { padding:1em 1em 1em 1.5em; font-family:baskerville,"palatino linotype",serif; }
-blockquote > *:first-child:before { content:"\201C";font-size:2.5em;margin-left:.62em;font-family:georgia,serif;padding-right:.2em;color:#aaa;line-height:0; }/* From Tripoli  */
+blockquote > *:first-child:before { content:"\201C";font-size:2.5em;margin-left:.62em;font-family:georgia,serif;padding-right:.2em;color:#aaa;
+/*    line-height:0;*/
+ }/* From Tripoli  */
 
 strong { ont-weight: bold; }
 em, dfn { font-style: italic; }
 dfn { font-weight: bold; }
 pre, code { margin: 1.5em 0; white-space: pre; }
-pre, code, tt { font: 1em monospace; line-height: 1.5; } 
+pre, code, tt { font: 1em monospace; 
+/*    line-height: 1.5; */
+} 
 tt { display: block; margin: 1.5em 0; }
 hr { margin-bottom:0.5em; color:#00002b; background-color:#00002b; height:1px; border:none;}
 
@@ -124,11 +127,11 @@ input, textarea { border-color:#00002b; border-width:2px;}
 
 .indent { text-indent:1.5em;}
 .open { font-variant: small-caps; }
-p.break { text-align:center;text-indent:0;line-height:0; }
+p.break { text-align:center;text-indent:0;/*line-height:0;*/ }
 p.zero{padding:0; margin:0}
 p.one { padding:0 1em  1em 1em;color:#111;}
 p img.right10 { float: right; margin:0.833em;  }
-p { line-height:1.3em; }
+p { /*line-height:1.3em;*/ }
 
 
 .oldbook { font-family:"Book Antiqua","Warnock Pro","Goudy Old Style","Palatino",Georgia,serif; }
