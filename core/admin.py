@@ -61,7 +61,7 @@ class IngredientAdmin(admin.ModelAdmin):
 
 
 class PhotoAdmin(admin.ModelAdmin):
-    list_display = ('title','image','full_url')
+    list_display = ('title','used','image','full_url')
     actions = [use_photo]
 
 class UnitAdmin(admin.ModelAdmin):
