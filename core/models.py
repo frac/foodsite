@@ -158,6 +158,9 @@ class Ingredient(Post):
     @property
     def name(self):
         return self.title
+    class Meta:
+        ordering = ["title"]
+
 
 CONVERSIONS= (
               (0,"No conversion"),

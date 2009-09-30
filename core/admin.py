@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.contrib import admin
 from django.contrib.auth.models import User
 from models import *
@@ -36,7 +37,7 @@ class RecipeAdmin(admin.ModelAdmin):
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == "pic":
-            kwargs["queryset"] = Photo.objects.filter(used=False)
+            kwargs["queryset"] = Photo.objects.filter(Q(used=False) | Q(post__isnull=False)).distinct()
             return db_field.formfield(**kwargs)
         return super(RecipeAdmin, self).formfield_for_foreignkey(db_field, request, **kwargs)
 
@@ -48,7 +49,7 @@ class PostAdmin(admin.ModelAdmin):
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == "pic":
-            kwargs["queryset"] = Photo.objects.filter(used=False)
+            kwargs["queryset"] = Photo.objects.filter(Q(used=False) | Q(post__isnull=False)).distinct()
             return db_field.formfield(**kwargs)
         return super(PostAdmin, self).formfield_for_foreignkey(db_field, request, **kwargs)
 
