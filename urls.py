@@ -14,7 +14,7 @@ from tagging.views import tagged_object_list
 
 
 detail = {'queryset': Post.objects.all(), 'slug_field':'slug'}
-detail_wave = {'queryset': Post.objects.all(), 'slug_field':'slug', 'template_name':'wave/post_detail_wave.html'}
+detail_wave = {'queryset': Post.objects.all(), 'slug_field':'slug', 'template_name':'wave/post_detail_wave.html', 'mimetype':'text/xml'}
 photo_wave = {'queryset': Photo.objects.all(),  'template_name':'wave/photo_detail_wave.html', 'mimetype':'text/xml'}
 
 tag_queryset = Post.get_open()

@@ -1,9 +1,10 @@
-{% extends "base.html"%}
+{% extends "wave.xml" %}
 {% load foodtags %}
 {% load markup %}
 {% load comments %}
+{% block title %}{{object.title}}{% endblock %}
 {% block content %}
-<img src="{{MEDIA_URL}}images/bar_entry.png">
+<img src="{{MEDIA_URL}}images/bar_rss.png">
     <div class="clear">&nbsp;</div>
         {% get_comment_count for object as comment_count %}        
         <h1>{{ object.title }}</h1>
@@ -45,5 +46,8 @@
         {% endif%}
 
         </div>
+<script>
+gadgets.window.adjustHeight();
+</script>
 
 {% endblock %}

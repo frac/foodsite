@@ -151,6 +151,10 @@ class Post(models.Model):
         except:
             return None
     
+    @property
+    def wave(self):
+        return "http://sfp.adrianopetrich.com/wave/%s"% self.slug
+
     
     @staticmethod
     def get_open():
