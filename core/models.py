@@ -37,6 +37,11 @@ class Photo(models.Model):
         path = str(self.image)
         return "http://sfp.adrianopetrich.com/static/%s_s%s"% (path[:-4],path[-4:])
 
+    @property
+    def wave(self):
+        return "http://sfp.adrianopetrich.com/photowave/%s"% self.id
+
+
     def get_path(self, thumb=True):
         if thumb:
             return "%s_t%s"% (self.image.path[:-4],self.image.path[-4:])

@@ -1,0 +1,10 @@
+{% extends "wave.xml" %}
+{% block title %}{{object.title}}{% endblock %}
+{% block content %}
+{% autoescape off %}
+<![CDATA[
+<img src="{{MEDIA_URL}}images/bar_rss.png">
+<p><img src="{{MEDIA_URL}}{{object.small}}" alt="{{object.title}}"></p>
+]]>
+{% endautoescape %}
+{% endblock %}

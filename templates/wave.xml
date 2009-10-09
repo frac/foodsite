@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+  <ModulePrefs title="{% block title %}Hellowave{% endblock %}">
+    <Require feature="wave" /> 
+  </ModulePrefs>
+  <Content type="html">
+  {% spaceless %}
+
+
+{% block content %}
+sfp
+{% endblock %}
+{% endspaceless %}
+  </Content>
+</Module>
