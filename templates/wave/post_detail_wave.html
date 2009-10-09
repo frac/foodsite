@@ -4,48 +4,24 @@
 {% load comments %}
 {% block title %}{{object.title}}{% endblock %}
 {% block content %}
+<style>
+.foo img{
+    height:450px;
+}
+</style>
 <img src="{{MEDIA_URL}}images/bar_rss.png">
+<div class="foo">
     <div class="clear">&nbsp;</div>
         {% get_comment_count for object as comment_count %}        
         <h1>{{ object.title }}</h1>
         <p class="credits">{{object.published_at }} | by {{object.author}} | Categories: {% for tag in object.get_tags %} <a href="/tag/{{tag}}" alt="{{tag}}" title="{{tag}}">{{tag}}</a> {%endfor%} | {{ comment_count }} comments </p>
         <p>
-        <a href="{{MEDIA_URL}}{{object.pic.image}}"><img src="{{MEDIA_URL}}{{object.pic.small}}" alt="{{object.pic.name}}"></a>
+        <a href="{{MEDIA_URL}}{{object.pic.image}}"><img src="{{MEDIA_URL}}{{object.pic.small}}" alt="{{object.pic.title}}" height="450"></a>
 
         {{ object|ingredients }}
         {{ object.text|textile }}</p>
         <div class="clear">&nbsp;</div>
-        <h2>Comments</h2>
-        <hr/>
-        <p>{% get_comment_list for object as comment_list %}
-        {% for comment in comment_list %}
-        <div class="clear comment {% cycle 'light' 'dark' %}">
-        <p>{{comment.user_email|gravatinha}}</p>
-        <p>Said <a href="{{ comment.user_url }}">{{ comment.user_name }}</a> in {{ comment.submit_date }}</p>
-        <blockquote>{{ comment.comment|linebreaks }}</blockquote>
-        </div>
-        {% endfor %}
-        </p>
-        <div class="clear">&nbsp;</div>
-        <p>{% render_comment_form for object %}</p>
-        <div class="clear">&nbsp;</div>
-        <h2>See more</h2>
-        <hr/>
-        <div class='nav'>
-        {% if object.get_previous %}
-            <div class="left">
-                <a href="/post/{{object.get_previous.slug}}"><img src="{{MEDIA_URL}}{{object.get_previous.pic.thumb}}"><br>
-                    <h3>Previous:{{ object.get_previous.title }}<h3></a>
-            </div>
-        {% endif%}
-        {% if object.get_next %}
-        <div class="right">
-            <a href="/post/{{object.get_next.slug}}"><img src="{{MEDIA_URL}}{{object.get_next.pic.thumb}}"><br>
-                <h3>Next:{{ object.get_next.title }}<h3></a>
-        </div>
-        {% endif%}
-
-        </div>
+</div>
 <script>
 gadgets.window.adjustHeight();
 </script>
