@@ -3,6 +3,7 @@ from django.utils.safestring import mark_safe
 from django import template
 from foodsite.core.models import Recipe, Post
 from django.template.loader import render_to_string
+import re
 register = template.Library()
 
 
@@ -28,3 +29,10 @@ def md5(valor=""):
 @register.filter
 def gravatinha(email):
     return mark_safe("<img src='http://www.gravatar.com/avatar/%s.jpg?s=80' />"% md5(email))
+
+
+sub_sem_img = re.compile( '![^! ]*!')
+@register.filter
+def sem_img(texto):
+    return sub_sem_img.sub("", texto)
+
