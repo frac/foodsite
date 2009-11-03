@@ -2,6 +2,11 @@
 {% load foodtags %}
 {% load markup %}
 {% load comments %}
+
+{% block title %}
+{{ object.title }} -- Secret Food Project
+{% endblock %}
+
 {% block content %}
 <img src="{{MEDIA_URL}}images/bar_entry.png">
     <div class="clear">&nbsp;</div>
