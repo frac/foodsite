@@ -12,13 +12,14 @@
     <div class="clear">&nbsp;</div>
         {% get_comment_count for object as comment_count %}        
         <h1>{{ object.title }}</h1>
-        <p class="credits">{{object.published_at }} | by {{object.author}} | Categories: {% for tag in object.get_tags %} <a href="/tag/{{tag}}" alt="{{tag}}" title="{{tag}}">{{tag}}</a> {%endfor%} | {{ comment_count }} comments </p>
+        <p class="credits">{{object.published_at }} | by {{object.author}} | Categories: {% for tag in object.get_tags %} <a href="/tag/{{tag}}" alt="{{tag}}" title="{{tag}}">{{tag}}</a> {%endfor%} | <a href="#comments">{{ comment_count }} comments</a> </p>
         <p>
         <a href="{{MEDIA_URL}}{{object.pic.image}}"><img src="{{MEDIA_URL}}{{object.pic.small}}" alt="{{object.pic.name}}"></a>
 
         {{ object|ingredients }}
         {{ object.text|textile }}</p>
         <div class="clear">&nbsp;</div>
+        <a name="comments"></a>
         <h2>Comments</h2>
         <hr/>
         <p>{% get_comment_list for object as comment_list %}
