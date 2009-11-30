@@ -22,7 +22,7 @@
         {% else %}
             <hr/>
             <h1><a href="/post/{{ post.slug }}">{{ post.title }}</a></h1>
-            <p class="credits">{{post.published_at }} | by {{post.author}} | Categories: {% for tag in post.get_tags %} <a href="/tag/{{tag}}" alt="{{tag}}" title="{{tag}}">{{tag}}</a> {%endfor%} | {{ comment_count }} comments </p>
+            <p class="credits">{{post.published_at }} | by {{post.author}} | Categories: {% for tag in post.get_tags %} <a href="/tag/{{tag}}" alt="{{tag}}" title="{{tag}}">{{tag}}</a> {%endfor%} | <a href="/post/{{ post.slug }}#comments">{{ comment_count }} comments</a> </p>
             <div class="g240"><a href="/post/{{ post.slug }}"><img src="{{MEDIA_URL}}{{post.pic.thumb}}"  alt="{{post.pic.name}}"></a></div>
             <div class="g480">
                 <p>{{ post.text|sem_img|textile|truncatewords_html:60 }}<p>
