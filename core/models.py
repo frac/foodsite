@@ -50,20 +50,26 @@ class Photo(models.Model):
 
     def create_thumb(self):
         im = Image.open(self.image )
+        if im.mode not in ('L', 'RGB'):
+            im = im.convert('RGB')
+        
+        quality_val = 95
+        dpi_val = (150,150)
+
         format = im.format
         min_dim = min(im.size)
 #        im = im.crop((0,0,min_dim,min_dim))
 
         #make large
-        im.thumbnail((MAX_SIZE,MAX_SIZE), Image.ANTIALIAS)
-        im.save(self.image.path, format)
+        im.resize((MAX_SIZE,MAX_SIZE), Image.ANTIALIAS)
+        im.save(self.image.path, format, quality=quality_val, dpi=dpi_val)
 
         #make it square
         im = ImageOps.fit(im, (min_dim,min_dim), centering=(0.5, 0.5))
 
         #make small 
-        im.thumbnail((SMALL_SIZE,SMALL_SIZE), Image.ANTIALIAS)
-        im.save(self.get_path(thumb=False), format)
+        im.resize((SMALL_SIZE,SMALL_SIZE), Image.ANTIALIAS)
+        im.save(self.get_path(thumb=False), format, quality=quality_val,  dpi=dpi_val)
 
         # create the path for the thumbnail image
         #thumb_path = self.thumb_path()
@@ -72,8 +78,8 @@ class Photo(models.Model):
         #    os.makedirs(thumb_dir, 0775)
 
         # Make Thumb
-        im.thumbnail((THUMB_SIZE,THUMB_SIZE), Image.ANTIALIAS)
-        im.save(self.get_path(), format)
+        im.resize((THUMB_SIZE,THUMB_SIZE), Image.ANTIALIAS)
+        im.save(self.get_path(), format, quality=quality_val, dpi=dpi_val)
 
     def destroy_thumb(self):
         try:
