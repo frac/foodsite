@@ -49,26 +49,26 @@ class Photo(models.Model):
             return "%s_s%s"% (self.image.path[:-4],self.image.path[-4:])
 
     def create_thumb(self):
-        im = Image.open(self.image )
-        if im.mode not in ('L', 'RGB'):
-            im = im.convert('RGB')
+        original = Image.open(self.image )
+        if original.mode not in ('L', 'RGB'):
+            original = original.convert('RGB')
         
         quality_val = 95
         dpi_val = (150,150)
 
-        format = im.format
-        min_dim = min(im.size)
-#        im = im.crop((0,0,min_dim,min_dim))
+        format = original.format
+        min_dim = min(original.size)
+        #original = original.crop((0,0,min_dim,min_dim))
 
         #make large
-        im.resize((MAX_SIZE,MAX_SIZE), Image.ANTIALIAS)
+        im = original.resize((MAX_SIZE,MAX_SIZE), Image.ANTIALIAS)
         im.save(self.image.path, format, quality=quality_val, dpi=dpi_val)
 
         #make it square
-        im = ImageOps.fit(im, (min_dim,min_dim), centering=(0.5, 0.5))
+        original = ImageOps.fit(im, (min_dim,min_dim), centering=(0.5, 0.5))
 
         #make small 
-        im.resize((SMALL_SIZE,SMALL_SIZE), Image.ANTIALIAS)
+        im = original.resize((SMALL_SIZE,SMALL_SIZE), Image.ANTIALIAS)
         im.save(self.get_path(thumb=False), format, quality=quality_val,  dpi=dpi_val)
 
         # create the path for the thumbnail image
@@ -78,7 +78,7 @@ class Photo(models.Model):
         #    os.makedirs(thumb_dir, 0775)
 
         # Make Thumb
-        im.resize((THUMB_SIZE,THUMB_SIZE), Image.ANTIALIAS)
+        im = original.resize((THUMB_SIZE,THUMB_SIZE), Image.ANTIALIAS)
         im.save(self.get_path(), format, quality=quality_val, dpi=dpi_val)
 
     def destroy_thumb(self):
