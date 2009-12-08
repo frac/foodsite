@@ -60,12 +60,13 @@ class Photo(models.Model):
         min_dim = min(original.size)
         #original = original.crop((0,0,min_dim,min_dim))
 
+        #make it square
+        original = ImageOps.fit(original, (min_dim,min_dim), centering=(0.5, 0.5))
+
         #make large
         im = original.resize((MAX_SIZE,MAX_SIZE), Image.ANTIALIAS)
         im.save(self.image.path, format, quality=quality_val, dpi=dpi_val)
 
-        #make it square
-        original = ImageOps.fit(im, (min_dim,min_dim), centering=(0.5, 0.5))
 
         #make small 
         im = original.resize((SMALL_SIZE,SMALL_SIZE), Image.ANTIALIAS)
