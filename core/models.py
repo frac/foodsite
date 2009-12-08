@@ -292,7 +292,7 @@ class PostModerator(SpamFighterModerator):
     keyword_check_moderate = False
 
 
-#PLEASE PLEASE don't kill me Niemeyer
+#PLEASE PLEASE don't kill me Niemeyer I know that I am calling a underscoremethod and I shouldn't
 if not (Post in moderator._registry) :
     moderator.register(Post, PostModerator)
 

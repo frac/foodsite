@@ -1,0 +1,3 @@
+#!/bin/sh
+# este eh o arquivo dbp.sh
+bpython -i .bpython.py
