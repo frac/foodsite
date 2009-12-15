@@ -34,6 +34,7 @@ class RecipeAdmin(admin.ModelAdmin):
     list_display = ('title', 'wave','pic','slug', 'tags','published_at')
     ordering = ('-published_at',)
     actions = [publish]
+    change_form_template = "admin/change_view_form.html"
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == "pic":
@@ -46,6 +47,7 @@ class PostAdmin(admin.ModelAdmin):
     list_display = ('title','pic','slug','published_at')
     ordering = ('-published_at',)
     actions = [publish]
+    change_form_template = "admin/change_view_form.html"
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == "pic":
@@ -57,11 +59,13 @@ class IngredientAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title",)}
     list_display = ('title','pic',)
     ordering = ('pic',)
+    change_form_template = "admin/change_view_form.html"
 
 
 
 class PhotoAdmin(admin.ModelAdmin):
     list_display = ('title','used','full_url', 'wave')
+    list_filter = ('used',)
     actions = [use_photo]
 
 class UnitAdmin(admin.ModelAdmin):
