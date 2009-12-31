@@ -13,7 +13,7 @@ THUMB_SIZE = 210
 class Photo(models.Model):
     title = models.CharField(max_length=255)
     image = models.ImageField(upload_to='photos/%Y/%m/%d')
-    author = models.CharField(max_length=255, default="Adriano")
+    author = models.CharField(max_length=255, default="Adriano Petrich")
     used = models.BooleanField(default=False)
 
     class Meta:
@@ -111,7 +111,7 @@ class Post(models.Model):
     pic = models.ForeignKey(Photo, null=True, blank=True)
     published_at = models.DateTimeField(null=True, blank=True)
     tags = TagField()
-    author = models.CharField(max_length=255, default="Adriano")
+    author = models.CharField(max_length=255, default="Adriano Petrich")
     
     @property
     def enable_comments(self):
