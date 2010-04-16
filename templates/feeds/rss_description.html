@@ -1,6 +1,18 @@
 {% load markup %}
 {% load foodtags %}
 {% load comments %}
+<div class="post">
+<img src="{{MEDIA_URL}}images/bar_rss.png">
+    <div class="clear">&nbsp;</div>
+        {% get_comment_count for obj as comment_count %}        
+        <h1><a href="http://{{site.domain}}/post/{{ obj.slug }}">{{ obj.title }}</a></h1>
+        <p class="credits">{{obj.published_at }} | by {{obj.author}} | Categories: {% for tag in obj.get_tags %} <a href="http://{{site.domain}}/tag/{{tag}}" alt="{{tag}}" title="{{tag}}">{{tag}}</a> {%endfor%} | <a href="http://{{site.domain}}/post/{{ obj.slug }}#comments">{{ comment_count }} comments</a> </p>
+        <p>
+        <a href="{{MEDIA_URL}}{{obj.pic.image}}"><img src="{{MEDIA_URL}}{{obj.pic.small}}" alt="{{obj.pic.name}}"></a>
+        
+        {{ obj|ingredients }}
+        {{ obj.text|textile }}</p>
+        <div class="clear">&nbsp;</div>
 <style>
     .post{
         font-size:80%;
@@ -14,16 +26,4 @@
     .credits{color:#444334;}
     hr { margin-bottom:0.5em; color:#00002b; background-color:#00002b; height:1px; border:none;}
 </style>
-<div class="post">
-<img src="{{MEDIA_URL}}images/bar_rss.png">
-    <div class="clear">&nbsp;</div>
-        {% get_comment_count for obj as comment_count %}        
-        <h1><a href="http://{{site.domain}}/post/{{ obj.slug }}">{{ obj.title }}</a></h1>
-        <p class="credits">{{obj.published_at }} | by {{obj.author}} | Categories: {% for tag in obj.get_tags %} <a href="http://{{site.domain}}/tag/{{tag}}" alt="{{tag}}" title="{{tag}}">{{tag}}</a> {%endfor%} | <a href="http://{{site.domain}}/post/{{ obj.slug }}#comments">{{ comment_count }} comments</a> </p>
-        <p>
-        <a href="{{MEDIA_URL}}{{obj.pic.image}}"><img src="{{MEDIA_URL}}{{obj.pic.small}}" alt="{{obj.pic.name}}"></a>
-        
-        {{ obj|ingredients }}
-        {{ obj.text|textile }}</p>
-        <div class="clear">&nbsp;</div>
 </div>

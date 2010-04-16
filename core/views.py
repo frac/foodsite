@@ -26,9 +26,25 @@ class BlogFeed(Feed):
         """
         return "/post/%s"% item.slug
 
+    def item_pubdate(self, item):
+        """
+        Takes an item, as returned by items(), and returns the item's
+        pubdate.
+        """        
+        return item.published_at
+
+    def item_author_name(self, item):
+        """
+        Returns the author name for every item in the feed.
+        """
+        return item.author
+
     def items(self):
         return Post.get_open()[:10]
 
 class AtomBlogFeed(BlogFeed):
     feed_type = Atom1Feed
     subtitle = BlogFeed.description
+    author_name="Adriano Petrich"
+
+
