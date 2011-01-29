@@ -31,7 +31,7 @@ urlpatterns = patterns('',
     # (r'^secret_foodsite/', include('secret_foodsite.foo.urls')),
 
     (r'^$', post_list),
-    (r'^post/(?P<slug>[-\w]+)$',object_detail,detail),
+    (r'^post/(?P<slug>[-\w]+)$',object_detail,detail, "post_detail"),
     (r'^tag/(?P<tag>[^/]+)/$',tagged_object_list, {'queryset_or_model':tag_queryset,"extra_context":{"menu":"tag"}, 'paginate_by':10}),
     (r'^feeds/(?P<url>.*)/$', 'django.contrib.syndication.views.feed', {'feed_dict': feeds}),
     (r'^comments/', include('django.contrib.comments.urls')),

@@ -89,6 +89,7 @@ class Photo(models.Model):
         except:
             pass
 
+        
     
 def cria_visualizacao(sender, **kwargs):
     instance = kwargs["instance"]
@@ -162,6 +163,9 @@ class Post(models.Model):
     def wave(self):
         return "http://sfp.adrianopetrich.com/wave/%s"% self.slug
 
+    @models.permalink
+    def get_absolute_url(self):
+        return ("post_detail", "", {"slug": self.slug})
     
     @staticmethod
     def get_open():
