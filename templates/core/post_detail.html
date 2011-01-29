@@ -1,7 +1,6 @@
 {% extends "base.html"%}
 {% load foodtags %}
 {% load markup %}
-{% load comments %}
 
 {% block title %}
 {{ object.title }} -- Secret Food Project
@@ -10,9 +9,8 @@
 {% block content %}
 <img src="{{MEDIA_URL}}images/bar_entry.png">
     <div class="clear">&nbsp;</div>
-        {% get_comment_count for object as comment_count %}        
         <h1>{{ object.title }}</h1>
-        <p class="credits">{{object.published_at }} | by {{object.author}} | Categories: {% for tag in object.get_tags %} <a href="/tag/{{tag}}" alt="{{tag}}" title="{{tag}}">{{tag}}</a> {%endfor%} | <a href="{{ object.full_url}}#disqus_thread" data-disqus-identifier="{{ object.slug }}">foobar</a> </p>
+        <p class="credits">{{object.published_at }} | by {{object.author}} | Categories: {% for tag in object.get_tags %} <a href="/tag/{{tag}}" alt="{{tag}}" title="{{tag}}">{{tag}}</a> {%endfor%} | <a href="{{ object.full_url}}#disqus_thread" data-disqus-identifier="{{ object.slug }}">comments</a> </p>
         <p>
         <a href="{{MEDIA_URL}}{{object.pic.image}}"><img src="{{MEDIA_URL}}{{object.pic.small}}" alt="{{object.pic.name}}"></a>
 
@@ -40,7 +38,6 @@
         dsq.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
-</script>
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>

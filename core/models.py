@@ -132,7 +132,7 @@ class Post(models.Model):
         return Tag.objects.get_for_object(self)    
 
     def __unicode__(self):
-        return u"%s"% self.title
+        return u"%s"% self.slug
 
     def get_next(self):
         try:
@@ -282,7 +282,7 @@ class Measurement(models.Model):
 
         return "( %s %s )"% (pretty( self.unit.to_imperial(self.amount) ), self.unit.imperial)
 
-
+"""
 from django.contrib.comments.moderation import  moderator 
 from comments_spamfighter.moderation import SpamFighterModerator
 class PostModerator(SpamFighterModerator):
@@ -300,4 +300,4 @@ class PostModerator(SpamFighterModerator):
 #PLEASE PLEASE don't kill me Niemeyer I know that I am calling a underscoremethod and I shouldn't
 if not (Post in moderator._registry) :
     moderator.register(Post, PostModerator)
-
+"""
