@@ -12,7 +12,7 @@ from foodsite.core.models import Post
 def list(request):
     posts =  Post.get_open()
     page = request.GET.get("page",1) #pagination is 1 based
-    return object_list(request, queryset=posts, page=page, paginate_by=5)
+    return object_list(request, queryset=posts, page=page, paginate_by=25)
 
 
 class BlogFeed(Feed):
