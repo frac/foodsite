@@ -20,9 +20,9 @@
         {% endcomment %}
             <h1><a href="/post/{{ post.slug }}">{{ post.title }}</a></h1>
             <p class="credits">{{post.published_at }} | by {{post.author}} | Categories: {% for tag in post.get_tags %} <a href="/tag/{{tag}}" alt="{{tag}}" title="{{tag}}">{{tag}}</a> {%endfor%} | <a href="{{ post.full_url}}#disqus_thread" data-disqus-identifier="{{ post.slug }}">comments</a> </p>
-            <div class="g240"><a href="/post/{{ post.slug }}"><img src="{{MEDIA_URL}}{{post.pic.image}}"  alt="{{post.pic.name}}"></a></div>
+            <div class="g240"><a href="/post/{{ post.slug }}"><img src="{{MEDIA_URL}}{{post.pic.small}}"  alt="{{post.pic.name}}"></a></div>
             <div class="g480">
-                <p>{{ post.text|sem_img|textile|truncatewords_html:60 }}</p>
+                <p>{{ post.text|sem_img|textile|truncatewords_html:60 }}</p></p>
                 <h3><a href="/post/{{ post.slug }}">Read More</a></h3>
             </div>
             <hr/>
