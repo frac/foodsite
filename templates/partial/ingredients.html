@@ -3,7 +3,7 @@
 <hr/>
 {% for measure in measurements %}
   {% if measure.ingredient %}
-    <p rel="ingredient" class='ingr'>
+    <p class="ingredient ingr">
     {{ measure.ingredient.name }}, 
     {% if  measure.amount %}
         {{ measure.metric }}
@@ -15,7 +15,7 @@
     </p>
   {% else %}
     {% if  measure.amount %}
-        <p rel="ingredient" class="ingr">
+        <p rel="ingredient ingr">
         {% if  measure.detail %}
             {{ measure.detail }}: 
         {% endif %}
