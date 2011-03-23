@@ -1,6 +1,7 @@
 from django.conf.urls.defaults import *
 from django.views.generic.simple import direct_to_template
 from django.views.generic.list_detail import object_list, object_detail
+from django.views.decorators.cache import cache_page
 
 from foodsite.core.views import list as post_list
 from foodsite.core.views import BlogFeed, AtomBlogFeed
@@ -11,6 +12,7 @@ admin.autodiscover()
 import datetime
 from foodsite.core.models import Post, Photo
 from tagging.views import tagged_object_list
+
 
 
 detail = {'queryset': Post.objects.all(), 'slug_field':'slug'}
@@ -31,12 +33,12 @@ urlpatterns = patterns('',
     # (r'^secret_foodsite/', include('secret_foodsite.foo.urls')),
 
     (r'^$', post_list),
-    (r'^post/(?P<slug>[-\w]+)$',object_detail,detail, "post_detail"),
-    (r'^tag/(?P<tag>[^/]+)/$',tagged_object_list, {'queryset_or_model':tag_queryset,"extra_context":{"menu":"tag"}, 'paginate_by':50}),
-    (r'^feeds/(?P<url>.*)/$', 'django.contrib.syndication.views.feed', {'feed_dict': feeds}),
+    (r'^post/(?P<slug>[-\w]+)$',cache_page(object_detail),detail, "post_detail"),
+    (r'^tag/(?P<tag>[^/]+)/$',cache_page(tagged_object_list), {'queryset_or_model':tag_queryset,"extra_context":{"menu":"tag"}, 'paginate_by':50}),
+    (r'^feeds/(?P<url>.*)/$', cache_page('django.contrib.syndication.views.feed'), {'feed_dict': feeds}),
     #(r'^comments/', include('django.contrib.comments.urls')),
-    (r'^wave/(?P<slug>[-\w]+)$',object_detail,detail_wave),
-    (r'^photowave/(?P<object_id>[0-9]+)$',object_detail,photo_wave),
+    (r'^wave/(?P<slug>[-\w]+)$',cache_page(object_detail),detail_wave),
+    (r'^photowave/(?P<object_id>[0-9]+)$',cache_page(object_detail),photo_wave),
 
 
 

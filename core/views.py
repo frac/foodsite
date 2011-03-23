@@ -6,9 +6,9 @@ from django.views.generic.list_detail import object_list
 
 import datetime
 from foodsite.core.models import Post
+from django.views.decorators.cache import cache_page
 
-
-
+@cache_page
 def list(request):
     posts =  Post.get_open()
     page = request.GET.get("page",1) #pagination is 1 based
