@@ -18,6 +18,7 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+
 if DEBUG:
     DATABASES = {
         'default': {
@@ -73,7 +74,9 @@ MEDIA_ROOT = os.path.join(PROJECT_PATH,'static')
 if DEBUG:
     MEDIA_URL = '/static/'
 else:
-    MEDIA_URL = 'http://sfp.adrianopetrich.com/static/'
+    MEDIA_URL = 'http://<site_url>/static/'
+
+SITE_URL = 'http://<site_url>/'
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
@@ -106,7 +109,7 @@ TEMPLATE_DIRS = (
     os.path.join(PROJECT_PATH,'templates'),
 )
 TEMPLATE_CONTEXT_PROCESSORS = (
-    "django.core.context_processors.auth",
+    "django.contrib.auth.context_processors.auth",
     "django.core.context_processors.debug",
     "django.core.context_processors.i18n",
     "django.core.context_processors.media",
