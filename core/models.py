@@ -5,6 +5,9 @@ from tagging.fields import TagField
 from tagging.models import Tag
 import datetime
 import Image, os, ImageOps
+from util import prettyprint
+from foodsite.settings import SITE_URL, MEDIA_URL
+
 MAX_SIZE = 970
 SMALL_SIZE = 450
 THUMB_SIZE = 210
@@ -35,20 +38,28 @@ class Photo(models.Model):
     @property
     def full_url(self):
         path = str(self.image)
-        return "http://sfp.adrianopetrich.com/static/%s_s%s"% (path[:-4],path[-4:])
+        return "%s%s_s%s"% (MEDIA_URL, path[:-4],path[-4:])
+        
 
     @property
     def wave(self):
-        return "http://sfp.adrianopetrich.com/photowave/%s"% self.id
+        return "%sphotowave/%s"% (SITE_URL, self.id)
 
+    def thumb_exists(self):
+        os.path.isfile(self.get_path(thumb=True))
 
-    def get_path(self, thumb=True):
+    def get_path(self, thumb=False):
         if thumb:
             return "%s_t%s"% (self.image.path[:-4],self.image.path[-4:])
         else:
             return "%s_s%s"% (self.image.path[:-4],self.image.path[-4:])
 
     def create_thumb(self):
+        """
+        Reformat and create small and thumbnail images.
+        All pictures are squared for artistic reasons :)
+        """
+        self.image.seek(0)
         original = Image.open(self.image )
         if original.mode not in ('L', 'RGB'):
             original = original.convert('RGB')
@@ -72,21 +83,26 @@ class Photo(models.Model):
         im = original.resize((SMALL_SIZE,SMALL_SIZE), Image.ANTIALIAS)
         im.save(self.get_path(thumb=False), format, quality=quality_val,  dpi=dpi_val)
 
-        # create the path for the thumbnail image
-        #thumb_path = self.thumb_path()
-        #thumb_dir = os.path.dirname(thumb_path)
-        #if not os.path.exists(thumb_dir):
-        #    os.makedirs(thumb_dir, 0775)
-
         # Make Thumb
         im = original.resize((THUMB_SIZE,THUMB_SIZE), Image.ANTIALIAS)
-        im.save(self.get_path(), format, quality=quality_val, dpi=dpi_val)
+        im.save(self.get_path(thumb=True), format, quality=quality_val, dpi=dpi_val)
 
     def destroy_thumb(self):
+        """
+        Delete all files when we delete the model
+        Files might not exist, see if I care.
+        """
         try:
-            os.unlink(self.get_path(True))
-            os.unlink(self.get_path(False))
-        except:
+            os.unlink(self.get_path(thumb=True))
+        except OSError:
+            pass
+        try:
+            os.unlink(self.get_path(thumb=False))
+        except OSError:
+            pass
+        try:
+            os.unlink(self.image.path)
+        except OSError:
             pass
 
         
@@ -94,8 +110,8 @@ class Photo(models.Model):
 def cria_visualizacao(sender, **kwargs):
     instance = kwargs["instance"]
     if instance.image:
-        #if not sender.thumb_exists():
-        instance.create_thumb()
+        if not instance.thumb_exists():
+            instance.create_thumb()
     
 def destroy_visualizacao(sender, **kwargs):
     instance = kwargs["instance"]
@@ -120,7 +136,7 @@ class Post(models.Model):
 
     @property
     def full_url(self):
-        return "http://sfp.adrianopetrich.com/post/%s"% self.slug
+        return "%spost/%s"% (SITE_URL,self.slug)
 
     class Meta:
         ordering = ["-published_at"]
@@ -161,17 +177,26 @@ class Post(models.Model):
     
     @property
     def wave(self):
-        return "http://sfp.adrianopetrich.com/wave/%s"% self.slug
+        return "%swave/%s"% (SITE_URL, self.slug)
 
     @models.permalink
     def get_absolute_url(self):
+        """
+        This is the more correct way of geting the url for the resource.
+        """
         return ("post_detail", "", {"slug": self.slug})
     
     @staticmethod
     def get_open():
+        """
+        Queryset with the published posts
+        """
         return Post.objects.filter(published_at__isnull=False,published_at__lte=datetime.datetime.today()).order_by('-published_at')
 
 class Recipe(Post):
+    """
+    Recipe differs with posts only that they have Measurements associated with them.
+    """
     pass
 
 class Ingredient(Post):
@@ -211,6 +236,11 @@ from decimal import Decimal as D
 
 
 class Unit(models.Model):
+    """
+    This could be a dictionary, but in the end It payed up to have it as a model.
+    Sometimes I want to add a unit like "leaves" or "cloves" that do not need conversion,
+    but looks nicer in the blog.
+    """
     metric = models.CharField(max_length=255)
     imperial = models.CharField(max_length=255)
     conversion = models.IntegerField(choices=CONVERSIONS)
@@ -241,23 +271,6 @@ class Unit(models.Model):
             return D('1.0936133') * amount
 
 
-from math import floor
-from fractions import Fraction
-
-def pretty(unit):
-
-    int_part = int(floor(unit))
-    if float(unit - int_part) <= 0.1:
-        return str(int_part)
-    r_part = str(Fraction.from_decimal(unit - int_part).limit_denominator(4))
-    if r_part == '1':
-        return str(int_part+1)
-
-    if int_part == 0:
-        return "%s"% ( r_part)
-
-    return "%s + %s"% (int_part, r_part)
-
 class Measurement(models.Model):
     recipe = models.ForeignKey(Recipe)
     ingredient = models.ForeignKey(Ingredient, null=True, blank=True)
@@ -272,32 +285,14 @@ class Measurement(models.Model):
 
     def metric(self):
         if self.unit:
-            return " %s %s "% (pretty( self.amount ), self.unit.metric)
+            return " %s %s "% (prettyprint( self.amount ), self.unit.metric)
         else:
-            return pretty( self.amount )
+            return prettyprint( self.amount )
     
     def imperial(self):
         if (not self.unit):
             return ""
 
-        return "( %s %s )"% (pretty( self.unit.to_imperial(self.amount) ), self.unit.imperial)
-
-"""
-from django.contrib.comments.moderation import  moderator 
-from comments_spamfighter.moderation import SpamFighterModerator
-class PostModerator(SpamFighterModerator):
-    # django's genric moderation options
-    #auto_moderate_field = 'created'
-    email_notification = True
-
-    # comments spamfighter options
-    akismet_check = True
-    akismet_check_moderate = True
-    keyword_check = True
-    keyword_check_moderate = False
+        return "( %s %s )"% (prettyprint( self.unit.to_imperial(self.amount) ), self.unit.imperial)
 
 
-#PLEASE PLEASE don't kill me Niemeyer I know that I am calling a underscoremethod and I shouldn't
-if not (Post in moderator._registry) :
-    moderator.register(Post, PostModerator)
-"""

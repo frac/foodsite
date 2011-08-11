@@ -1,18 +1,13 @@
 from django.db.models import Q
 from django.contrib import admin
-from django.contrib.auth.models import User
-from models import *
+from models import Measurement, Post, Photo
+from models import Recipe, Ingredient, Unit
 import datetime
 
 
-class PhotoInline(admin.TabularInline):
-        model = Photo
-        extra = 1
-
-
 class MeasurementInline(admin.TabularInline):
-        model = Measurement
-        extra = 10
+    model = Measurement
+    extra = 10
 
 
 def publish(modeladmin, request, queryset):
@@ -28,19 +23,6 @@ def use_photo(modeladmin, request, queryset):
             obj.used=True
             obj.save()
 
-class RecipeAdmin(admin.ModelAdmin):
-    prepopulated_fields = {"slug": ("title",)}
-    inlines = [MeasurementInline]
-    list_display = ('title', 'wave','pic','slug', 'tags','published_at')
-    ordering = ('-published_at',)
-    actions = [publish]
-    change_form_template = "admin/change_view_form.html"
-
-    def formfield_for_foreignkey(self, db_field, request, **kwargs):
-        if db_field.name == "pic":
-            kwargs["queryset"] = Photo.objects.filter(Q(used=False) | Q(post__isnull=False)).distinct()
-            return db_field.formfield(**kwargs)
-        return super(RecipeAdmin, self).formfield_for_foreignkey(db_field, request, **kwargs)
 
 class PostAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title",)}
@@ -50,10 +32,28 @@ class PostAdmin(admin.ModelAdmin):
     change_form_template = "admin/change_view_form.html"
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        """
+        Show only pictures that have not been used or that belongs to posts
+        """
         if db_field.name == "pic":
             kwargs["queryset"] = Photo.objects.filter(Q(used=False) | Q(post__isnull=False)).distinct()
             return db_field.formfield(**kwargs)
         return super(PostAdmin, self).formfield_for_foreignkey(db_field, request, **kwargs)
+
+class RecipeAdmin(PostAdmin):
+    inlines = [MeasurementInline]
+    list_display = ('title', 'wave','pic','slug', 'tags','published_at')
+
+    # have to apear again because of the return super   
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        """
+        Show only pictures that have not been used or that belongs to posts
+        """
+        if db_field.name == "pic":
+            kwargs["queryset"] = Photo.objects.filter(Q(used=False) | Q(post__isnull=False)).distinct()
+            return db_field.formfield(**kwargs)
+        return super(RecipeAdmin, self).formfield_for_foreignkey(db_field, request, **kwargs)
+
 
 class IngredientAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title",)}

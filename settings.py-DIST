@@ -19,19 +19,27 @@ ADMINS = (
 MANAGERS = ADMINS
 
 if DEBUG:
-    DATABASE_ENGINE = 'mysql'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-    DATABASE_NAME = 'secretfood_development'             # Or path to database file if using sqlite3.
-    DATABASE_USER = 'root'             # Not used with sqlite3.
-    DATABASE_PASSWORD = ''         # Not used with sqlite3.
-    DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
-    DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
+    DATABASES = {
+        'default': {
+            'ENGINE' : 'django.db.backends.mysql',
+            'NAME': 'secretfood_development',             # Or path to database file if using sqlite3.
+            'USER': 'root',             # Not used with sqlite3.
+            'PASSWORD': '',         # Not used with sqlite3.
+            'HOST': '',             # Set to empty string for localhost. Not used with sqlite3.
+            'PORT': '',             # Set to empty string for default. Not used with sqlite3.
+        }
+    }
 else:
-    DATABASE_ENGINE = 'mysql'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-    DATABASE_NAME = 'sfp_production'             # Or path to database file if using sqlite3.
-    DATABASE_USER = 'sfp'             # Not used with sqlite3.
-    DATABASE_PASSWORD = '*****'         # Not used with sqlite3.
-    DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
-    DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
+    DATABASES = {
+        'default': {
+            'ENGINE' : 'django.db.backends.mysql',
+            'NAME': 'sfp_production',             # Or path to database file if using sqlite3.
+            'USER': 'sfp',             # Not used with sqlite3.
+            'PASSWORD': '',         # Not used with sqlite3.
+            'HOST': '',             # Set to empty string for localhost. Not used with sqlite3.
+            'PORT': '',             # Set to empty string for default. Not used with sqlite3.
+        }
+    }
 
 
 # Local time zone for this installation. Choices can be found here:
@@ -92,6 +100,7 @@ MIDDLEWARE_CLASSES = (
 )
 
 ROOT_URLCONF = 'foodsite.urls'
+CACHE_BACKEND = 'db://cachetable'
 
 TEMPLATE_DIRS = (
     os.path.join(PROJECT_PATH,'templates'),
@@ -113,11 +122,15 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'django.contrib.markup',
     'django.contrib.flatpages',
+    'test_extensions',
     'south',
     'tagging',
     'foodsite.core',
 )
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
-#DEBUG = True
+DISQUS_API_KEY = '<your key>'
+DISQUS_WEBSITE_SHORTNAME = "your name"
+AKISMET_SECRET_API_KEY = "<your key>"
 
 
