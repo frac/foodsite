@@ -20,4 +20,16 @@ Then
     ./manage syncdb
     ./manage migrate
 
-Posts are made in the admin
+Posting is done in the admin
+
+    <your_url>/admin/
+
+posts suport textile markup code so an example post should be something like
+
+    h2. sub title
+
+    !image.jpg! 
+
+    "new link":http://link_url
+
+
