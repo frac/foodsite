@@ -7,3 +7,4 @@ django-comments-spamfighter
 mysql-python
 django-nose
 pil
+django-push

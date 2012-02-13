@@ -3,7 +3,7 @@ from django.contrib import admin
 from models import Measurement, Post, Photo
 from models import Recipe, Ingredient, Unit
 import datetime
-
+from django_push.publisher import ping_hub
 
 class MeasurementInline(admin.TabularInline):
     model = Measurement
@@ -15,6 +15,7 @@ def publish(modeladmin, request, queryset):
         if not obj.published_at:
             obj.published_at=datetime.datetime.today()
             obj.save()
+    ping_hub('http://sfp.adrianopetrich.com/feeds/atom/')
 
 
 def use_photo(modeladmin, request, queryset):

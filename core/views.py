@@ -1,6 +1,7 @@
 # Create your views here.
-from django.contrib.syndication.feeds import Feed
-from django.utils.feedgenerator import Atom1Feed
+#from django.contrib.syndication.feeds import Feed
+from django_push.publisher.feeds import Feed
+from django.utils.feedgenerator import Rss201rev2Feed
 
 from django.views.generic.list_detail import object_list
 
@@ -15,10 +16,12 @@ def list(request):
     return object_list(request, queryset=posts, page=page, paginate_by=25)
 
 
-class BlogFeed(Feed):
+class AtomBlogFeed(Feed):
+#    feed_type = Atom1Feed
     title = "Secret Food Project"
     link = "/"
     description = "So secret that we don't even have a subtitle"
+    subtitle = "So secret that we don't even have a subtitle"
 
     def item_link(self, item):
         """
@@ -42,9 +45,7 @@ class BlogFeed(Feed):
     def items(self):
         return Post.get_open()[:10]
 
-class AtomBlogFeed(BlogFeed):
-    feed_type = Atom1Feed
-    subtitle = BlogFeed.description
+class BlogFeed(AtomBlogFeed):
+    feed_type = Rss201rev2Feed
     author_name="Adriano Petrich"
-
 
