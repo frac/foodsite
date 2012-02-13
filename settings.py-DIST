@@ -18,6 +18,7 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+DEFAULT_FROM_EMAIL = "petrich@aaoquadrado.com"
 
 if DEBUG:
     DATABASES = {
@@ -74,9 +75,9 @@ MEDIA_ROOT = os.path.join(PROJECT_PATH,'static')
 if DEBUG:
     MEDIA_URL = '/static/'
 else:
-    MEDIA_URL = 'http://<site_url>/static/'
+    MEDIA_URL = 'http://sfp.adrianopetrich.com/static/'
 
-SITE_URL = 'http://<site_url>/'
+SITE_URL = 'http://sfp.adrianopetrich.com/'
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
@@ -85,6 +86,8 @@ ADMIN_MEDIA_PREFIX = '/admin-media/'
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = '+3h^373a+(f^g#v+f9$y!!mv#d256l^+i9*ni+nwxztdo+%)fs'
+
+PUSH_HUB = 'https://pubsubhubbub.appspot.com'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
