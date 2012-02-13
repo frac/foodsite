@@ -1,0 +1,10 @@
+django==1.3
+django-test-extensions
+south
+textile
+django-tagging
+django-comments-spamfighter
+mysql-python
+django-nose
+pil
+django-push

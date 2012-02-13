@@ -1,7 +1,6 @@
-from django.template.defaultfilters import stringfilter,floatformat
 from django.utils.safestring import mark_safe
 from django import template
-from foodsite.core.models import Recipe, Post
+from foodsite.core.models import Recipe
 from django.template.loader import render_to_string
 import re
 register = template.Library()
@@ -9,30 +8,26 @@ register = template.Library()
 
 @register.filter
 def ingredients(post):
+    """
+    if the post is a recipe post show ingredients
+    It is necessary to do this way because of the inheritance of Post and Recipes
+    """
     try:
         if type(post) == Recipe:
-            receita = post
+            recipe = post
         else:
-            receita = Recipe.objects.get(id=post.id)
-        return mark_safe(render_to_string('partial/ingredients.html', { 'measurements': receita.measurement_set.all() }))
+            recipe = Recipe.objects.get(id=post.id)
+        return mark_safe(render_to_string('partial/ingredients.html', { 'measurements': recipe.measurement_set.all() }))
     except Recipe.DoesNotExist:
         return ""
 #ingredients.mark_safe = True
 
+
+sub_no_img = re.compile( '![^! ]*!')
 @register.filter
-def md5(valor=""):
-    from hashlib import md5
-    m = md5(str(valor).lower())
-    return m.hexdigest()
-
-
-@register.filter
-def gravatinha(email):
-    return mark_safe("<img src='http://www.gravatar.com/avatar/%s.jpg?s=80' />"% md5(email))
-
-
-sub_sem_img = re.compile( '![^! ]*!')
-@register.filter
-def sem_img(texto):
-    return sub_sem_img.sub("", texto)
+def no_img(texto):
+    """
+    strips textile imgs from text
+    """
+    return sub_no_img.sub("", texto)
 
