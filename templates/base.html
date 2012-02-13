@@ -13,6 +13,9 @@
 
 <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://sfp.adrianopetrich.com/feeds/rss/" />
 <link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="http://sfp.adrianopetrich.com/feeds/atom/" />
+<!-- Place this tag in the <head> of your document-->
+<link href="https://plus.google.com/secretfoodproject/" rel="publisher" />
+
 <meta name="Description" content="Secret food project is a food geek blog.">
 
 <title>{% block title %}shhh! it's the secret food project {% endblock %}</title>
@@ -49,6 +52,7 @@ body {background-color:#fff;}
     <ul class="menu">
         <li><a href="/about/me">me</a></li>
         <li><a href="/about/site">the site</a></li>
+	<li><a href="https://plus.google.com/100987709111850146804/?prsrc=3" style="text-decoration: none;"><img src="https://ssl.gstatic.com/images/icons/gplus-32.png" width="32" height="32" style="border: 0;"/></a></li>
     </ul>
 <div id="google_translate_element"></div><script>
 function googleTranslateElementInit() {
@@ -74,14 +78,17 @@ foobar
 
  </div>
 <script type="text/javascript">
-    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script type="text/javascript">
-    try {
-        var pageTracker = _gat._getTracker("UA-185499-3");
-        pageTracker._trackPageview();
-        } catch(err) {}
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-185499-3']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
 </script>
 <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
 </body></html>
