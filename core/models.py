@@ -18,6 +18,7 @@ MAX_SIZE = 970
 SMALL_SIZE = 450
 THUMB_SIZE = 210
 
+from django.utils.safestring import SafeString
 
 class Photo(models.Model):
     """
@@ -49,9 +50,11 @@ class Photo(models.Model):
         path = str(self.image)
         return "%s%s_s%s" % (MEDIA_URL, path[:-4], path[-4:])
 
-    @property
     def wave(self):
-        return "%sphotowave/%s" % (SITE_URL, self.id)
+        path = str(self.image)
+        return "<img src='%s%s_t%s'/>" % (MEDIA_URL, path[:-4], path[-4:])
+    wave.allow_tags = True
+    wave.short_description = 'Imagem'
 
     def thumb_exists(self):
         os.path.isfile(self.get_path(thumb=True))
