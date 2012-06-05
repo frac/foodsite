@@ -24,6 +24,14 @@ body {background-color:#fff;}
 .main{background-color:#fff;}
 </style>
 </head><body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=347358872002931";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 <div class="main">
     <a href="/"><div class="g960"><img src="{{MEDIA_URL}}images/logo.png" width=970 height=215 title="secret food project logo"></div></a>
     <div class="miniclear"></div>
