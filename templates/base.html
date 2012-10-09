@@ -1,6 +1,7 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"><head>
-
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
 <meta property="fb:admins" content="513014666" />
 <link rel="me" type="text/html" href="http://www.google.com/profiles/petrich"/>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -24,7 +25,38 @@
 body {background-color:#fff;}
 .main{background-color:#fff;}
 </style>
-</head><body>
+</head>
+<script>
+function CopyText() {
+   if (document.selection && document.selection.createRange) {
+      var obj = document.selection.createRange(); 
+      var txt = obj.text + "\n\nSource: "  + document.location.href +"\n";
+      if (window.clipboardData) window.clipboardData.setData("Text", txt);
+      window.event.returnValue = false;
+   }
+}
+function addLink() {
+    console.log("copiando");
+   var body_element = document.getElementsByTagName('body')[0];
+   var selection;
+   selection = window.getSelection();
+   var pagelink = "<br /><br /> Source: <a href='"+document.location.href+"'>"+document.location.href+"</a><br />";
+   var lbr = "\n";
+   var copytext = selection.toString().replace(/\n/g, "<br />") + pagelink;
+   var newdiv = document.createElement('div');
+   body_element.appendChild(newdiv);
+   newdiv.innerHTML = copytext;
+   selection.selectAllChildren(newdiv);
+   window.setTimeout(function() {
+      body_element.removeChild(newdiv);
+   },0);
+}
+
+document.oncopy = addLink;
+
+</script>
+
+  <body oncopy="CopyText()">
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
