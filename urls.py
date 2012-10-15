@@ -14,18 +14,15 @@ from foodsite.core.models import Post, Photo
 from tagging.views import tagged_object_list
 
 
-
-detail = {'queryset': Post.objects.all(), 'slug_field':'slug'}
-detail_wave = {'queryset': Post.objects.all(), 'slug_field':'slug', 'template_name':'wave/post_detail_wave.html', 'mimetype':'text/xml'}
-photo_wave = {'queryset': Photo.objects.all(),  'template_name':'wave/photo_detail_wave.html', 'mimetype':'text/xml'}
+detail = {'queryset': Post.objects.all(), 'slug_field': 'slug'}
+detail_wave = {'queryset': Post.objects.all(), 'slug_field': 'slug', 'template_name': 'wave/post_detail_wave.html', 'mimetype': 'text/xml'}
+photo_wave = {'queryset': Photo.objects.all(), 'template_name': 'wave/photo_detail_wave.html', 'mimetype': 'text/xml'}
 
 tag_queryset = Post.get_open()
 
 
-feeds = {
-        'rss': BlogFeed,
-        'atom': AtomBlogFeed,
-    }
+feeds = {'rss': BlogFeed,
+         'atom': AtomBlogFeed, }
 from django.contrib.syndication.views import feed
 
 urlpatterns = patterns('',
@@ -33,18 +30,18 @@ urlpatterns = patterns('',
     # (r'^secret_foodsite/', include('secret_foodsite.foo.urls')),
 
     (r'^$', post_list),
-    (r'^post/(?P<slug>[-\w]+)$',cache_page(object_detail),detail, "post_detail"),
-    (r'^testow/(?P<slug>[-\w]+)$',object_detail,detail, "post_detail"),
-    (r'^tag/(?P<tag>[^/]+)/$',cache_page(tagged_object_list), {'queryset_or_model':tag_queryset,"extra_context":{"menu":"tag"}, 'paginate_by':50}),
+    (r'^post/(?P<slug>[-\w]+)$', cache_page(object_detail), detail, "post_detail"),
+    (r'^testow/(?P<slug>[-\w]+)$', object_detail, detail, "post_detail"),
+    (r'^tag/(?P<tag>[-\w0-9\W]+)/$', cache_page(tagged_object_list), {'queryset_or_model': tag_queryset, "extra_context": {"menu": "tag"}, 'paginate_by': 50}),
     (r'^feeds/(?P<url>.*)/$', feed, {'feed_dict': feeds}),
     #(r'^comments/', include('django.contrib.comments.urls')),
-    (r'^wave/(?P<slug>[-\w]+)$',cache_page(object_detail),detail_wave),
-    (r'^photowave/(?P<object_id>[0-9]+)$',cache_page(object_detail),photo_wave),
+    (r'^wave/(?P<slug>[-\w]+)$', cache_page(object_detail), detail_wave),
+    (r'^photowave/(?P<object_id>[0-9]+)$', cache_page(object_detail), photo_wave),
 
 
 
     #(r'^detalhes$', direct_to_template, {'template': "detalhes.html"}),
-    # Uncomment the admin/doc line below and add 'django.contrib.admindocs' 
+    # Uncomment the admin/doc line below and add 'django.contrib.admindocs'
     # to INSTALLED_APPS to enable admin documentation:
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
@@ -55,8 +52,6 @@ urlpatterns = patterns('',
 from django.conf import settings
 
 if settings.DEBUG:
-    import os
     urlpatterns += patterns('',
         (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root' : settings.MEDIA_ROOT}),
-        )
-
+    )
