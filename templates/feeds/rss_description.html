@@ -3,8 +3,8 @@
 <div class="post">
 <img src="{{MEDIA_URL}}images/bar_rss.png">
     <div class="clear">&nbsp;</div>
-        <h1><a href="http://{{site.domain}}/post/{{ obj.slug }}">{{ obj.title }}</a></h1>
-        <p class="credits">{{obj.published_at }} | by {{obj.author}} | Categories: {% for tag in obj.get_tags %} <a href="http://{{site.domain}}/tag/{{tag}}" alt="{{tag}}" title="{{tag}}">{{tag}}</a> {%endfor%} | <a href="http://{{site.domain}}/post/{{ obj.slug }}#disqus_thread">comments</a> </p>
+        <h1><a href="http://{site.domain}/post/{{ obj.slug }}">{{ obj.title }}</a></h1>
+        <p class="credits">{{obj.published_at }} | by {{obj.author}} | Categories: {% for tag in obj.get_tags %} {{tag|tagfy}} {%endfor%} | <a href="http://{{site.domain}}/post/{{ obj.slug }}#disqus_thread">comments</a> </p>
         <p>
         <a href="{{MEDIA_URL}}{{obj.pic.image}}"><img src="{{MEDIA_URL}}{{obj.pic.small}}" alt="{{obj.pic.name}}"></a>
         

@@ -11,7 +11,7 @@
     <div class="clear">&nbsp;</div>
         <span class="hrecipe">
         <h1 class="fn">{{ object.title }}</h1>
-        <p class="credits"> {{object.published_at }} | by <span class="author">{{object.author}}</span> | Categories: {% for tag in object.get_tags %} <a href="/tag/{{tag}}" class="tag" alt="{{tag}}" title="{{tag}}">{{tag}}</a> {%endfor%} | <a href="{{ object.full_url}}#disqus_thread" data-disqus-identifier="{{ object.slug }}">comments</a> </p>
+        <p class="credits"> {{object.published_at }} | by <span class="author">{{object.author}}</span> | Categories: {% for tag in object.get_tags %} {{ tag|tagfy }} {%endfor%} | <a href="{{ object.full_url}}#disqus_thread" data-disqus-identifier="{{ object.slug }}">comments</a> </p>
 	<p><g:plusone href="{{ object.full_url}}"></g:plusone>
     <div class="fb-like" data-href="{{ object.full_url}}" data-send="true" data-width="450" data-show-faces="true" data-font="arial"></div>
     

@@ -18,7 +18,6 @@ MAX_SIZE = 970
 SMALL_SIZE = 450
 THUMB_SIZE = 210
 
-from django.utils.safestring import SafeString
 
 class Photo(models.Model):
     """
@@ -91,7 +90,7 @@ class Photo(models.Model):
 
         #make small
         im = original.resize((SMALL_SIZE, SMALL_SIZE), Image.ANTIALIAS)
-        im.save(self.get_path(thumb=False), format, quality=quality_val,  dpi=dpi_val)
+        im.save(self.get_path(thumb=False), format, quality=quality_val, dpi=dpi_val)
 
         # Make Thumb
         im = original.resize((THUMB_SIZE, THUMB_SIZE), Image.ANTIALIAS)
@@ -167,7 +166,7 @@ class Post(models.Model):
         except AttributeError:
             self._next = None
         try:
-            if self._next == None:
+            if self._next is None:
                 self._next = Post.get_open().filter(published_at__gt=self.published_at).order_by("published_at")[0]
             return self._next
         except:
@@ -180,7 +179,7 @@ class Post(models.Model):
             self._previous = None
         try:
 
-            if self._previous == None:
+            if self._previous is None:
                 self._previous = Post.get_open().filter(published_at__lt=self.published_at).order_by("-published_at")[0]
             return self._previous
         except:
@@ -221,8 +220,7 @@ class Ingredient(Post):
         ordering = ["title"]
 
 
-CONVERSIONS = (
-              (0, "No conversion"),
+CONVERSIONS = ((0, "No conversion"),
               (1, "g/oz"),
               (2, "k/Lb"),
               (3, "ml/foz"),
@@ -232,8 +230,7 @@ CONVERSIONS = (
               (5, "cm/inch"),
               (6, "m/inch"),
               (10, "m/y"),
-              (7, "celcius/F")
-            )
+              (7, "celcius/F"))
 
 
 def tagit(sender, instance, **kwargs):

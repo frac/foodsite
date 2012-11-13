@@ -1,3 +1,4 @@
+{% load foodtags %}
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
@@ -74,7 +75,7 @@ document.oncopy = addLink;
     <img src="{{MEDIA_URL}}images/categories.png">
     <ul class="menu">
         {% for tag in categories %}
-        <li><a href="/tag/{{tag}}" alt="{{tag}}" title="{{tag}}">{{tag}}({{tag.count}})</a></li>
+        <li>{{tag|tagfy:"1"}}</li>
         {% endfor %}
     </ul>
     <!--img src="{{MEDIA_URL}}images/popular.png">
