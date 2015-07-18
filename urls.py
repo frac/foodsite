@@ -29,26 +29,17 @@ urlpatterns = patterns('',
     url(r'^$', cache_page(300)(ListView.as_view(queryset=tag_queryset))),
     url(r'^post/(?P<slug>[-\w]+)$', cache_page(300)(DetailView.as_view(queryset=Post.objects.all(), slug_field='slug')), name="post_detail"),
     url(r'^testow/(?P<slug>[-\w]+)$', DetailView.as_view(queryset=Post.objects.all(), slug_field='slug')),
-    url(r'^tag/(?P<tag>[-\w0-9\W]+)/$', cache_page(300)(TaggedObjectList.as_view(queryset=tag_queryset, paginate_by=50))),  # extra_context={"menu": "tag"},
+    #AP url(r'^tag/(?P<tag>[-\w0-9\W]+)/$', cache_page(300)(TaggedObjectList.as_view(queryset=tag_queryset, paginate_by=50))),  # extra_context={"menu": "tag"},
     # (r'^tag/(?P<tag>[-\w0-9\W]+)/$', tagged_object_list, {'queryset_or_model': tag_queryset, "extra_context": {"menu": "tag"}, 'paginate_by': 50}),
-    url(r'^feeds/(?P<url>.*)/$', Feed, {'feed_dict': feeds}),
-    # (r'^comments/', include('django.contrib.comments.urls')),
-    # (r'^wave/(?P<slug>[-\w]+)$', cache_page(300)(object_detail), detail_wave),
-    # (r'^photowave/(?P<object_id>[0-9]+)$', cache_page(300)(object_detail), photo_wave),
+    #AP url(r'^feeds/(?P<url>.*)/$', Feed, {'feed_dict': feeds}),
 
-
-    # (r'^detalhes$', direct_to_template, {'template': "detalhes.html"}),
-    # Uncomment the admin/doc line below and add 'django.contrib.admindocs'
-    # to INSTALLED_APPS to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
-    # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
 )
 
 from django.conf import settings
 
-if settings.DEBUG:
-    urlpatterns += patterns('',
-        url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
-    )
+#if settings.DEBUG:
+#    urlpatterns += patterns('',
+#        url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
+#    )
