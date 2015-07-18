@@ -279,7 +279,6 @@ class Unit(models.Model):
             return D('0.0010570824524312897') * amount
         if self.conversion == 10L:  # m -> y
             return D('1.0936133') * amount
-        return amount
 
 
 class Measurement(models.Model):
@@ -303,7 +302,7 @@ class Measurement(models.Model):
             return prettyprint(self.amount)
 
     def imperial(self):
-        if (not self.unit):
+        if (not self.unit) or (self.unit.conversion == 0L):
             return ""
 
         return "( %s %s )" % (prettyprint(self.unit.to_imperial(self.amount)), self.unit.imperial)
