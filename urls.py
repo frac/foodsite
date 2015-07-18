@@ -1,6 +1,5 @@
 from django.conf.urls.defaults import *
-from django.views.generic.simple import direct_to_template
-from django.views.generic.list_detail import object_list, object_detail
+from django.views.generic.list_detail import object_detail
 from django.views.decorators.cache import cache_page
 
 from foodsite.core.views import list as post_list
@@ -9,9 +8,8 @@ from foodsite.core.views import BlogFeed, AtomBlogFeed
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
-import datetime
 from foodsite.core.models import Post, Photo
-from tagging.views import tagged_object_list
+from tagging.views import TaggedObjectList
 
 
 detail = {'queryset': Post.objects.all(), 'slug_field': 'slug'}
@@ -32,16 +30,15 @@ urlpatterns = patterns('',
     (r'^$', post_list),
     (r'^post/(?P<slug>[-\w]+)$', cache_page(object_detail), detail, "post_detail"),
     (r'^testow/(?P<slug>[-\w]+)$', object_detail, detail, "post_detail"),
-    (r'^tag/(?P<tag>[-\w0-9\W]+)/$', cache_page(tagged_object_list), {'queryset_or_model': tag_queryset, "extra_context": {"menu": "tag"}, 'paginate_by': 50}),
-    #(r'^tag/(?P<tag>[-\w0-9\W]+)/$', tagged_object_list, {'queryset_or_model': tag_queryset, "extra_context": {"menu": "tag"}, 'paginate_by': 50}),
+    (r'^tag/(?P<tag>[-\w0-9\W]+)/$', cache_page(TaggedObjectList), {'queryset_or_model': tag_queryset, "extra_context": {"menu": "tag"}, 'paginate_by': 50}),
+    # (r'^tag/(?P<tag>[-\w0-9\W]+)/$', tagged_object_list, {'queryset_or_model': tag_queryset, "extra_context": {"menu": "tag"}, 'paginate_by': 50}),
     (r'^feeds/(?P<url>.*)/$', feed, {'feed_dict': feeds}),
-    #(r'^comments/', include('django.contrib.comments.urls')),
+    # (r'^comments/', include('django.contrib.comments.urls')),
     (r'^wave/(?P<slug>[-\w]+)$', cache_page(object_detail), detail_wave),
     (r'^photowave/(?P<object_id>[0-9]+)$', cache_page(object_detail), photo_wave),
 
 
-
-    #(r'^detalhes$', direct_to_template, {'template': "detalhes.html"}),
+    # (r'^detalhes$', direct_to_template, {'template': "detalhes.html"}),
     # Uncomment the admin/doc line below and add 'django.contrib.admindocs'
     # to INSTALLED_APPS to enable admin documentation:
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
@@ -54,5 +51,5 @@ from django.conf import settings
 
 if settings.DEBUG:
     urlpatterns += patterns('',
-        (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root' : settings.MEDIA_ROOT}),
+        (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
     )
