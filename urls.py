@@ -28,14 +28,14 @@ urlpatterns = patterns('',
     # (r'^secret_foodsite/', include('secret_foodsite.foo.urls')),
 
     (r'^$', post_list),
-    (r'^post/(?P<slug>[-\w]+)$', cache_page(object_detail), detail, "post_detail"),
+    (r'^post/(?P<slug>[-\w]+)$', cache_page(300)(object_detail), detail, "post_detail"),
     (r'^testow/(?P<slug>[-\w]+)$', object_detail, detail, "post_detail"),
-    (r'^tag/(?P<tag>[-\w0-9\W]+)/$', cache_page(TaggedObjectList), {'queryset_or_model': tag_queryset, "extra_context": {"menu": "tag"}, 'paginate_by': 50}),
+    (r'^tag/(?P<tag>[-\w0-9\W]+)/$', cache_page(300)(TaggedObjectList), {'queryset_or_model': tag_queryset, "extra_context": {"menu": "tag"}, 'paginate_by': 50}),
     # (r'^tag/(?P<tag>[-\w0-9\W]+)/$', tagged_object_list, {'queryset_or_model': tag_queryset, "extra_context": {"menu": "tag"}, 'paginate_by': 50}),
     (r'^feeds/(?P<url>.*)/$', Feed, {'feed_dict': feeds}),
     # (r'^comments/', include('django.contrib.comments.urls')),
-    (r'^wave/(?P<slug>[-\w]+)$', cache_page(object_detail), detail_wave),
-    (r'^photowave/(?P<object_id>[0-9]+)$', cache_page(object_detail), photo_wave),
+    (r'^wave/(?P<slug>[-\w]+)$', cache_page(300)(object_detail), detail_wave),
+    (r'^photowave/(?P<object_id>[0-9]+)$', cache_page(300)(object_detail), photo_wave),
 
 
     # (r'^detalhes$', direct_to_template, {'template': "detalhes.html"}),
