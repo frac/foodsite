@@ -21,7 +21,7 @@ tag_queryset = Post.get_open()
 
 feeds = {'rss': BlogFeed,
          'atom': AtomBlogFeed, }
-from django.contrib.syndication.views import feed
+from django.contrib.syndication.views import Feed
 
 urlpatterns = patterns('',
     # Example:
@@ -32,7 +32,7 @@ urlpatterns = patterns('',
     (r'^testow/(?P<slug>[-\w]+)$', object_detail, detail, "post_detail"),
     (r'^tag/(?P<tag>[-\w0-9\W]+)/$', cache_page(TaggedObjectList), {'queryset_or_model': tag_queryset, "extra_context": {"menu": "tag"}, 'paginate_by': 50}),
     # (r'^tag/(?P<tag>[-\w0-9\W]+)/$', tagged_object_list, {'queryset_or_model': tag_queryset, "extra_context": {"menu": "tag"}, 'paginate_by': 50}),
-    (r'^feeds/(?P<url>.*)/$', feed, {'feed_dict': feeds}),
+    (r'^feeds/(?P<url>.*)/$', Feed, {'feed_dict': feeds}),
     # (r'^comments/', include('django.contrib.comments.urls')),
     (r'^wave/(?P<slug>[-\w]+)$', cache_page(object_detail), detail_wave),
     (r'^photowave/(?P<object_id>[0-9]+)$', cache_page(object_detail), photo_wave),
