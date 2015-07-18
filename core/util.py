@@ -13,11 +13,9 @@ def prettyprint(unit):
         return str(int_part)
     r_part = str(Fraction.from_decimal(unit - int_part).limit_denominator(5))
     if r_part == '1':
-        return str(int_part+1)
+        return str(int_part + 1)
 
     if int_part == 0:
-        return "%s"% ( r_part)
+        return "%s" % (r_part)
 
-    return "%s + %s"% (int_part, r_part)
-
-
+    return "%s + %s" % (int_part, r_part)

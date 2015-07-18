@@ -279,6 +279,7 @@ class Unit(models.Model):
             return D('0.0010570824524312897') * amount
         if self.conversion == 10L:  # m -> y
             return D('1.0936133') * amount
+        return amount
 
 
 class Measurement(models.Model):
