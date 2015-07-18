@@ -10,6 +10,7 @@ from foodsite.core.models import Post
 from tagging.views import TaggedObjectList
 from django.views.generic import ListView
 from django.views.generic import DetailView
+from django.contrib.syndication.views import Feed
 
 detail = {'queryset': Post.objects.all(), 'slug_field': 'slug'}
 # detail_wave = {'queryset': Post.objects.all(), 'slug_field': 'slug', 'template_name': 'wave/post_detail_wave.html', 'mimetype': 'text/xml'}
@@ -20,7 +21,6 @@ tag_queryset = Post.get_open()
 
 feeds = {'rss': BlogFeed,
          'atom': AtomBlogFeed, }
-from django.contrib.syndication.views import Feed
 
 urlpatterns = patterns('',
     # Example:
@@ -31,7 +31,7 @@ urlpatterns = patterns('',
     url(r'^testow/(?P<slug>[-\w]+)$', DetailView.as_view(queryset=Post.objects.all(), slug_field='slug')),
     url(r'^tag/(?P<tag>[-\w0-9\W]+)/$', cache_page(300)(TaggedObjectList.as_view(queryset=tag_queryset, paginate_by=50))),  # extra_context={"menu": "tag"},
     # (r'^tag/(?P<tag>[-\w0-9\W]+)/$', tagged_object_list, {'queryset_or_model': tag_queryset, "extra_context": {"menu": "tag"}, 'paginate_by': 50}),
-    #AP url(r'^feeds/(?P<url>.*)/$', Feed, {'feed_dict': feeds}),
+    url(r'^feeds/(?P<url>.*)/$', Feed.as_view(feed_dict=feeds)),
 
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
