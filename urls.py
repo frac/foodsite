@@ -1,8 +1,6 @@
 from django.conf.urls.defaults import *
-from django.views.generic.list_detail import object_detail
 from django.views.decorators.cache import cache_page
 
-from foodsite.core.views import list as post_list
 from foodsite.core.views import BlogFeed, AtomBlogFeed
 
 # Uncomment the next two lines to enable the admin:
@@ -11,6 +9,7 @@ admin.autodiscover()
 from foodsite.core.models import Post
 from tagging.views import TaggedObjectList
 from django.views.generic import ListView
+from django.views.generic import DetailView
 
 detail = {'queryset': Post.objects.all(), 'slug_field': 'slug'}
 # detail_wave = {'queryset': Post.objects.all(), 'slug_field': 'slug', 'template_name': 'wave/post_detail_wave.html', 'mimetype': 'text/xml'}
@@ -27,9 +26,9 @@ urlpatterns = patterns('',
     # Example:
     # (r'^secret_foodsite/', include('secret_foodsite.foo.urls')),
 
-    (r'^$', ListView.as_view(queryset=tag_queryset)),
-    (r'^post/(?P<slug>[-\w]+)$', cache_page(300)(object_detail), detail, "post_detail"),
-    (r'^testow/(?P<slug>[-\w]+)$', object_detail, detail, "post_detail"),
+    (r'^$', cache_page(300)(ListView.as_view(queryset=tag_queryset))),
+    (r'^post/(?P<slug>[-\w]+)$', cache_page(300)(DetailView.as_view(*detail)), , "post_detail"),
+    (r'^testow/(?P<slug>[-\w]+)$', DetailView.as_view(*detail), "post_detail"),
     (r'^tag/(?P<tag>[-\w0-9\W]+)/$', cache_page(300)(TaggedObjectList), {'queryset_or_model': tag_queryset, "extra_context": {"menu": "tag"}, 'paginate_by': 50}),
     # (r'^tag/(?P<tag>[-\w0-9\W]+)/$', tagged_object_list, {'queryset_or_model': tag_queryset, "extra_context": {"menu": "tag"}, 'paginate_by': 50}),
     (r'^feeds/(?P<url>.*)/$', Feed, {'feed_dict': feeds}),
