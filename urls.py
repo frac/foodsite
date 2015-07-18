@@ -29,7 +29,7 @@ urlpatterns = patterns('',
     url(r'^$', cache_page(300)(ListView.as_view(queryset=tag_queryset))),
     url(r'^post/(?P<slug>[-\w]+)$', cache_page(300)(DetailView.as_view(queryset=Post.objects.all(), slug_field='slug')), name="post_detail"),
     url(r'^testow/(?P<slug>[-\w]+)$', DetailView.as_view(queryset=Post.objects.all(), slug_field='slug')),
-    #AP url(r'^tag/(?P<tag>[-\w0-9\W]+)/$', cache_page(300)(TaggedObjectList.as_view(queryset=tag_queryset, paginate_by=50))),  # extra_context={"menu": "tag"},
+    url(r'^tag/(?P<tag>[-\w0-9\W]+)/$', cache_page(300)(TaggedObjectList.as_view(queryset=tag_queryset, paginate_by=50))),  # extra_context={"menu": "tag"},
     # (r'^tag/(?P<tag>[-\w0-9\W]+)/$', tagged_object_list, {'queryset_or_model': tag_queryset, "extra_context": {"menu": "tag"}, 'paginate_by': 50}),
     #AP url(r'^feeds/(?P<url>.*)/$', Feed, {'feed_dict': feeds}),
 
