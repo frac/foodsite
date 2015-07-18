@@ -26,12 +26,12 @@ urlpatterns = patterns('',
     # Example:
     # (r'^secret_foodsite/', include('secret_foodsite.foo.urls')),
 
-    (r'^$', cache_page(300)(ListView.as_view(queryset=tag_queryset))),
-    (r'^post/(?P<slug>[-\w]+)$', cache_page(300)(DetailView.as_view(queryset=Post.objects.all(), slug_field='slug')), name="post_detail"),
-    (r'^testow/(?P<slug>[-\w]+)$', DetailView.as_view(queryset=Post.objects.all(), slug_field='slug')),
-    (r'^tag/(?P<tag>[-\w0-9\W]+)/$', cache_page(300)(TaggedObjectList.as_view(queryset=tag_queryset, paginate_by=50))),  # extra_context={"menu": "tag"},
+    url(r'^$', cache_page(300)(ListView.as_view(queryset=tag_queryset))),
+    url(r'^post/(?P<slug>[-\w]+)$', cache_page(300)(DetailView.as_view(queryset=Post.objects.all(), slug_field='slug')), name="post_detail"),
+    url(r'^testow/(?P<slug>[-\w]+)$', DetailView.as_view(queryset=Post.objects.all(), slug_field='slug')),
+    url(r'^tag/(?P<tag>[-\w0-9\W]+)/$', cache_page(300)(TaggedObjectList.as_view(queryset=tag_queryset, paginate_by=50))),  # extra_context={"menu": "tag"},
     # (r'^tag/(?P<tag>[-\w0-9\W]+)/$', tagged_object_list, {'queryset_or_model': tag_queryset, "extra_context": {"menu": "tag"}, 'paginate_by': 50}),
-    (r'^feeds/(?P<url>.*)/$', Feed, {'feed_dict': feeds}),
+    url(r'^feeds/(?P<url>.*)/$', Feed, {'feed_dict': feeds}),
     # (r'^comments/', include('django.contrib.comments.urls')),
     # (r'^wave/(?P<slug>[-\w]+)$', cache_page(300)(object_detail), detail_wave),
     # (r'^photowave/(?P<object_id>[0-9]+)$', cache_page(300)(object_detail), photo_wave),
@@ -40,15 +40,15 @@ urlpatterns = patterns('',
     # (r'^detalhes$', direct_to_template, {'template': "detalhes.html"}),
     # Uncomment the admin/doc line below and add 'django.contrib.admindocs'
     # to INSTALLED_APPS to enable admin documentation:
-    (r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
-    (r'^admin/', include(admin.site.urls)),
+    url(r'^admin/', include(admin.site.urls)),
 )
 
 from django.conf import settings
 
 if settings.DEBUG:
     urlpatterns += patterns('',
-        (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
+        url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
     )
