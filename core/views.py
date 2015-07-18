@@ -1,23 +1,23 @@
 # Create your views here.
-#from django.contrib.syndication.feeds import Feed
+# from django.contrib.syndication.feeds import Feed
 from django_push.publisher.feeds import Feed
 from django.utils.feedgenerator import Rss201rev2Feed
 
 from django.views.generic.list_detail import object_list
 
-import datetime
 from foodsite.core.models import Post
 from django.views.decorators.cache import cache_page
 
-@cache_page
+
+@cache_page(300)
 def list(request):
-    posts =  Post.get_open()
-    page = request.GET.get("page",1) #pagination is 1 based
+    posts = Post.get_open()
+    page = request.GET.get("page", 1)  # pagination is 1 based
     return object_list(request, queryset=posts, page=page, paginate_by=25)
 
 
 class AtomBlogFeed(Feed):
-#    feed_type = Atom1Feed
+    # feed_type = Atom1Feed
     title = "Secret Food Project"
     link = "/"
     description = "So secret that we don't even have a subtitle"
@@ -27,13 +27,13 @@ class AtomBlogFeed(Feed):
         """
         Takes an item, as returned by items(), and returns the item's URL.
         """
-        return "/post/%s"% item.slug
+        return "/post/%s" % item.slug
 
     def item_pubdate(self, item):
         """
         Takes an item, as returned by items(), and returns the item's
         pubdate.
-        """        
+        """
         return item.published_at
 
     def item_author_name(self, item):
@@ -45,7 +45,7 @@ class AtomBlogFeed(Feed):
     def items(self):
         return Post.get_open()[:10]
 
+
 class BlogFeed(AtomBlogFeed):
     feed_type = Rss201rev2Feed
-    author_name="Adriano Petrich"
-
+    author_name = "Adriano Petrich"
