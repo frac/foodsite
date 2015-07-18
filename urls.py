@@ -8,13 +8,13 @@ from foodsite.core.views import BlogFeed, AtomBlogFeed
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
-from foodsite.core.models import Post, Photo
+from foodsite.core.models import Post
 from tagging.views import TaggedObjectList
-
+from django.views.generic import ListView
 
 detail = {'queryset': Post.objects.all(), 'slug_field': 'slug'}
-detail_wave = {'queryset': Post.objects.all(), 'slug_field': 'slug', 'template_name': 'wave/post_detail_wave.html', 'mimetype': 'text/xml'}
-photo_wave = {'queryset': Photo.objects.all(), 'template_name': 'wave/photo_detail_wave.html', 'mimetype': 'text/xml'}
+# detail_wave = {'queryset': Post.objects.all(), 'slug_field': 'slug', 'template_name': 'wave/post_detail_wave.html', 'mimetype': 'text/xml'}
+# photo_wave = {'queryset': Photo.objects.all(), 'template_name': 'wave/photo_detail_wave.html', 'mimetype': 'text/xml'}
 
 tag_queryset = Post.get_open()
 
@@ -27,15 +27,15 @@ urlpatterns = patterns('',
     # Example:
     # (r'^secret_foodsite/', include('secret_foodsite.foo.urls')),
 
-    (r'^$', post_list),
+    (r'^$', ListView.as_view(queryset=tag_queryset)),
     (r'^post/(?P<slug>[-\w]+)$', cache_page(300)(object_detail), detail, "post_detail"),
     (r'^testow/(?P<slug>[-\w]+)$', object_detail, detail, "post_detail"),
     (r'^tag/(?P<tag>[-\w0-9\W]+)/$', cache_page(300)(TaggedObjectList), {'queryset_or_model': tag_queryset, "extra_context": {"menu": "tag"}, 'paginate_by': 50}),
     # (r'^tag/(?P<tag>[-\w0-9\W]+)/$', tagged_object_list, {'queryset_or_model': tag_queryset, "extra_context": {"menu": "tag"}, 'paginate_by': 50}),
     (r'^feeds/(?P<url>.*)/$', Feed, {'feed_dict': feeds}),
     # (r'^comments/', include('django.contrib.comments.urls')),
-    (r'^wave/(?P<slug>[-\w]+)$', cache_page(300)(object_detail), detail_wave),
-    (r'^photowave/(?P<object_id>[0-9]+)$', cache_page(300)(object_detail), photo_wave),
+    # (r'^wave/(?P<slug>[-\w]+)$', cache_page(300)(object_detail), detail_wave),
+    # (r'^photowave/(?P<object_id>[0-9]+)$', cache_page(300)(object_detail), photo_wave),
 
 
     # (r'^detalhes$', direct_to_template, {'template': "detalhes.html"}),
