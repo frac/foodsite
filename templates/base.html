@@ -26,6 +26,7 @@
 body {background-color:#fff;}
 .main{background-color:#fff;}
 </style>
+{% block head %}{% endblock %}
 </head>
 <script>
 function CopyText() {
@@ -59,13 +60,30 @@ document.oncopy = addLink;
 
   <body oncopy="CopyText()">
 <div id="fb-root"></div>
-<script>(function(d, s, id) {
+<!--script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
   js = d.createElement(s); js.id = id;
   js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=347358872002931";
   fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+}(document, 'script', 'facebook-jssdk'));</script-->
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '347358872002931',
+      xfbml      : true,
+      version    : 'v2.7'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
 <div class="main">
     <a href="/"><div class="g960"><img src="{{MEDIA_URL}}images/logo.png" width=970 height=215 title="secret food project logo"></div></a>
     <div class="miniclear"></div>

@@ -1,4 +1,4 @@
-from django.conf.urls.defaults import *
+from django.conf.urls import url, include
 from django.views.decorators.cache import cache_page
 
 from foodsite.core.views import BlogFeed, AtomBlogFeed
@@ -18,7 +18,7 @@ detail = {'queryset': Post.objects.all(), 'slug_field': 'slug'}
 tag_queryset = Post.get_open()
 
 
-urlpatterns = patterns('',
+urlpatterns = [
     # Example:
     # (r'^secret_foodsite/', include('secret_foodsite.foo.urls')),
 
@@ -31,7 +31,7 @@ urlpatterns = patterns('',
     url(r'^feeds/atom/$', AtomBlogFeed()),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
-)
+]
 
 from django.conf import settings
 

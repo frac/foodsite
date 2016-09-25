@@ -3,7 +3,7 @@
 from django_push.publisher.feeds import Feed
 from django.utils.feedgenerator import Rss201rev2Feed
 
-from django.views.generic.list_detail import object_list
+from django.views.generic.list import ListView
 
 from foodsite.core.models import Post
 from django.views.decorators.cache import cache_page

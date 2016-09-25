@@ -1,10 +1,21 @@
 {% extends "base.html"%}
 {% load foodtags %}
-{% load markup %}
+{% load markup_tags %}
 
 {% block title %}
 {{ object.title }} -- Secret Food Project
 {% endblock %}
+
+
+{% block head %}
+	<meta property="fb:app_id"        content="347358872002931" />
+	<meta property="og:url"           content="{{ object.full_url}}" />
+	<meta property="og:type"          content="website" />
+	<meta property="og:title"         content="{{ object.title }} -- Secret Food Project" />
+	<meta property="og:image"         content="{{MEDIA_URL}}{{object.pic.small}}" />
+	<meta property="og:description"   content="{{ object.text|no_img|apply_markup:"textile"|truncatewords_html:60 }}" />
+{% endblock %}
+
 
 {% block content %}
 <img src="{{MEDIA_URL}}images/bar_entry.png">
@@ -13,11 +24,12 @@
         <h1 class="fn">{{ object.title }}</h1>
         <p class="credits"> {{object.published_at }} | by <span class="author">{{object.author}}</span> | Categories: {% for tag in object.get_tags %} {{ tag|tagfy }} {%endfor%} | <a href="{{ object.full_url}}#disqus_thread" data-disqus-identifier="{{ object.slug }}">comments</a> </p>
 	<p><g:plusone href="{{ object.full_url}}"></g:plusone>
+        <link rel="image_src" property="image_src" href="{{MEDIA_URL}}{{object.pic.small}}"/>
     <div class="fb-like" data-href="{{ object.full_url}}" data-send="true" data-width="450" data-show-faces="true" data-font="arial"></div>
     
     </p>
         <p>
-        <a href="{{MEDIA_URL}}{{object.pic.image}}"><img src="{{MEDIA_URL}}{{object.pic.small}}" class="photo" alt="{{object.pic.name}}"></a>
+        <a href="{{MEDIA_URL}}{{object.pic.image}}"><img src="{{MEDIA_URL}}{{object.pic.small}}"  title="{{ object.title }}"  class="photo" alt="{{object.title}}"></a>
 
         {{ object|ingredients }}
 	<span class="hreview-aggregate review" style="display:none;">
@@ -25,7 +37,7 @@
 	<span class="count">1 Vote</span>
         </span>
 
-        <span class="instructions">{{ object.text|textile }}</span></p>
+        <span class="instructions">{{ object.text|apply_markup:"textile" }}</span></p>
         </span>
         <div class="clear">&nbsp;</div>
 <div id="disqus_thread"></div>

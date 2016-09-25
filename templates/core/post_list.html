@@ -1,6 +1,6 @@
 {% extends "base.html"%}
 {% load foodtags %}
-{% load markup %}
+{% load markup_tags %}
 {% block content %}
 {% if menu %}
 <img src="{{MEDIA_URL}}images/bar_categories.png">
@@ -15,15 +15,16 @@
             <p class="credits">{{post.published_at }} | by {{post.author}} | Categories: {% for tag in post.get_tags %} <a href="/tag/{{tag}}" alt="{{tag}}" title="{{tag}}">{{tag}}</a> {%endfor%} | <a href="{{ post.full_url}}#disqus_thread" data-disqus-identifier="{{ post.slug }}">comments</a> </p>
             <p><a href="{{MEDIA_URL}}{{post.pic.image}}"><img src="{{MEDIA_URL}}{{post.pic.small}}" alt="{{post.pic.name}}"></a></p>
             {{ post|ingredients }}
-            {{ post.text|textile }}
+            {{ post.text|apply_markup:"textile" }}
             
         {% endcomment %}
             <h1><a href="/post/{{ post.slug }}">{{ post.title }}</a></h1>
             <p class="credits">{{post.published_at }} | by {{post.author}} | Categories: {% for tag in post.get_tags %} {{ tag|tagfy }} {%endfor%} | <a href="{{ post.full_url}}#disqus_thread" data-disqus-identifier="{{ post.slug }}">comments</a> </p>
 	<p><g:plusone href="{{ post.full_url}}"></g:plusone> <div class="fb-like" data-href="{{ post.full_url}}" data-send="true" data-width="450" data-show-faces="true" data-font="arial"></div>
+        <link rel="image_src" property="image_src" href="{{MEDIA_URL}}{{post.pic.small}}"/>
     </p>
-	<p><a href="/post/{{ post.slug }}"><img src="{{MEDIA_URL}}{{post.pic.small}}"  alt="{{post.pic.name}}"></a></p>
-                <p>{{ post.text|no_img|textile|truncatewords_html:60 }}</p></p>
+	<p><a href="/post/{{ post.slug }}"><img src="{{MEDIA_URL}}{{post.pic.small}}" title="{{ post.title }}"  alt="{{post.pic.name}}"></a></p>
+                <p>{{ post.text|no_img|apply_markup:"textile"|truncatewords_html:60 }}</p></p>
                 <h3><a href="/post/{{ post.slug }}">Read More</a></h3>
 		<br clear="all">
             <hr/>
